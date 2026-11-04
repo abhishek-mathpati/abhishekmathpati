@@ -15,3 +15,4 @@ export const SpreadCertifications: React.FC<SpreadProps> = ({ className = '' }) 
     </div>
   )
 }
+

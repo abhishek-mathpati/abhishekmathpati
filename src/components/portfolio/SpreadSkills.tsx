@@ -15,3 +15,4 @@ export const SpreadSkills: React.FC<SpreadProps> = ({ className = '' }) => {
     </div>
   )
 }
+

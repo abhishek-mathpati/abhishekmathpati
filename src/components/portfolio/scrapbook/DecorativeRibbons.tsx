@@ -44,3 +44,4 @@ export const DecorativeRibbons: React.FC<Props> = ({ className = '' }) => {
     </svg>
   )
 }
+

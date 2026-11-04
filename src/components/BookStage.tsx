@@ -112,11 +112,14 @@ export const BookStage: React.FC<BookStageProps> = ({
       ======================================================== */}
       <div
         style={{
-          transform: `rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
+          transform:
+            mouseTilt.x === 0 && mouseTilt.y === 0
+              ? 'none'
+              : `rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
           transition: 'transform 0.25s ease-out',
-          transformStyle: 'preserve-3d',
+          transformStyle: mouseTilt.x === 0 && mouseTilt.y === 0 ? 'flat' : 'preserve-3d',
         }}
-        className="relative w-[95vw] sm:w-[92vw] max-w-[1150px] aspect-[1.56/1] max-h-[720px] flex items-center justify-center"
+        className="relative w-[95vw] sm:w-[92vw] max-w-[1150px] aspect-[1.56/1] max-h-[720px] flex items-center justify-center crisp-page"
       >
         {isClosed ? (
           /* ========================================================
@@ -210,11 +213,9 @@ export const BookStage: React.FC<BookStageProps> = ({
             ======================================================== */}
             <div
               style={{
-                transform: 'translateZ(25px)',
                 zIndex: 40,
-                transformStyle: 'preserve-3d',
               }}
-              className="absolute inset-0 rounded-[20px] sm:rounded-[24px]"
+              className="absolute inset-0 rounded-[20px] sm:rounded-[24px] crisp-page"
             >
               {isTurning && targetPage && turnDirection ? (
                 <PageTurnAnimation
@@ -259,7 +260,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                   }}
                   aria-label={currentIndex === 0 ? "Close Book" : "Previous Page"}
                   title={currentIndex === 0 ? "Close Book" : "Previous Page (Left Arrow)"}
-                  className="absolute -left-6 sm:-left-9 z-50 w-11 h-11 rounded-full bg-black/30 hover:bg-black/55 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 backdrop-blur-xs hover:scale-105 active:scale-95 shadow-lg"
+                  className="absolute -left-6 sm:-left-9 z-50 w-11 h-11 rounded-full bg-black/40 hover:bg-black/65 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-105 active:scale-95 shadow-lg"
                 >
                   {currentIndex === 0 ? (
                     <Book className="w-4 h-4 stroke-[2.2]" />
@@ -274,7 +275,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                     onClick={() => onStartTurn('next')}
                     aria-label="Next Page"
                     title="Next Page (Right Arrow)"
-                    className="absolute -right-6 sm:-right-9 z-50 w-11 h-11 rounded-full bg-black/30 hover:bg-black/55 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 backdrop-blur-xs hover:scale-105 active:scale-95 shadow-lg"
+                    className="absolute -right-6 sm:-right-9 z-50 w-11 h-11 rounded-full bg-black/40 hover:bg-black/65 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-105 active:scale-95 shadow-lg"
                   >
                     <ChevronRight className="w-6 h-6 stroke-[2.2]" />
                   </button>

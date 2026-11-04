@@ -30,3 +30,4 @@ export const SpiralSpine: React.FC<Props> = ({ className = '', count = 14 }) => 
     </div>
   )
 }
+

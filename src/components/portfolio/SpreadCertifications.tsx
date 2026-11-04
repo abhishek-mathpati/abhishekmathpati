@@ -6,11 +6,11 @@ interface SpreadProps {
 
 export const SpreadCertifications: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
+    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
       <img
         src="/designs/Page6.png"
         alt="Certifications Spread"
-        className="w-full h-full object-fill pointer-events-none select-none"
+        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
       />
     </div>
   )

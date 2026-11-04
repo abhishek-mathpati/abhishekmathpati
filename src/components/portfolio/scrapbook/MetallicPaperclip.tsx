@@ -56,3 +56,4 @@ export const MetallicPaperclip: React.FC<Props> = ({
     </svg>
   )
 }
+

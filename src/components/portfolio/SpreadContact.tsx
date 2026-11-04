@@ -9,12 +9,12 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
+    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
       {/* High-Definition Master Design */}
       <img
         src="/designs/Page8.png"
         alt="Language Skills & Contact Spread"
-        className="w-full h-full object-fill pointer-events-none select-none"
+        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
       />
 
       {/* Interactive Link: GitHub Profile */}

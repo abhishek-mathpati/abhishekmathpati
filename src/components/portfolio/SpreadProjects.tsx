@@ -6,14 +6,14 @@ interface SpreadProps {
 
 export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
+    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
       {/* High-Definition Master Design with Uniform Typography */}
       <img
         src="/designs/Page4.png?v=uniform"
         alt="Projects Spread"
         loading="eager"
         fetchPriority="high"
-        className="w-full h-full object-fill pointer-events-none select-none"
+        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
       />
 
       {/* Interactive Link: SecureShare GitHub Repository */}

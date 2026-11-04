@@ -121,3 +121,4 @@ export const WoodenClipboardClip: React.FC<Props> = ({ className = '' }) => {
     </svg>
   )
 }
+

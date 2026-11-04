@@ -22,33 +22,12 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
   return (
     <header className="relative z-30 w-full px-6 sm:px-10 pt-5 pb-2 flex items-center justify-between select-none">
       {/* Top Left Heading */}
-      <div className="flex flex-col">
-        <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white font-sans flex items-center gap-2">
+      <div className="flex items-center">
+        <h1 className="text-3xl sm:text-4xl font-normal tracking-wide text-white font-apricots flex items-center gap-2">
           <span>Abhishek Mathpati</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block mb-1"></span>
         </h1>
-        <p className="text-[11px] sm:text-xs text-white/70 tracking-wider font-medium mt-0.5">
-          Software Developer & Security Researcher • Portfolio
-        </p>
       </div>
-
-      {/* Center: Minimal Page Count Icon matching reference screenshot */}
-      {!isClosed && (
-        <div className="hidden sm:flex items-center gap-1.5 text-white/75 text-xs font-medium tracking-wide">
-          <div className="relative w-3.5 h-3.5 flex items-center justify-center">
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              className="w-3.5 h-3.5 stroke-[1.6]"
-            >
-              <rect x="2.5" y="2" width="11" height="12" rx="1.5" />
-              <line x1="2.5" y1="14" x2="13.5" y2="2" />
-            </svg>
-          </div>
-          <span>{totalPages * 2} Pages ({totalPages} Spreads)</span>
-        </div>
-      )}
 
       {/* Top Right: Clean Minimal Controls */}
       <div className="flex items-center gap-2.5">
@@ -59,7 +38,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
             onToggleBook()
           }}
           aria-label={isClosed ? "Open Book" : "Close Book"}
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all duration-200 backdrop-blur-xs shadow-sm hover:scale-105 active:scale-95"
+          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all duration-200 shadow-sm hover:scale-105 active:scale-95"
         >
           {isClosed ? (
             <>

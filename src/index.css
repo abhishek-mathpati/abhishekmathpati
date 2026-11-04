@@ -128,3 +128,51 @@ body {
     transparent 100%
   );
 }
+
+/* Typography for Education & Portfolio Canvas */
+.font-spartan {
+  font-family: 'League Spartan', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+.font-times {
+  font-family: 'Times New Roman', Times, 'Tinos', Baskerville, Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+.font-script {
+  font-family: 'Dancing Script', 'Caveat', cursive, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* Scrapbook Textures & Patterns */
+.bg-leather-notebook {
+  background-color: #4a3324;
+  background-image: 
+    radial-gradient(ellipse at 35% 25%, rgba(140, 95, 65, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 75%, rgba(35, 20, 10, 0.65) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.bg-gingham-brown {
+  background-color: #f7eee4;
+  background-image: 
+    linear-gradient(90deg, rgba(138, 97, 68, 0.42) 50%, transparent 50%),
+    linear-gradient(rgba(138, 97, 68, 0.42) 50%, transparent 50%);
+  background-size: 26px 26px;
+}
+
+.bg-scrapbook-note {
+  background-color: #f8f4ea;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(240, 232, 218, 0.4) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 16px 16px, 16px 16px;
+}

@@ -1,6 +1,4 @@
 import React from 'react'
-import { Terminal, ShieldCheck, Lock, ExternalLink, Code, Layers, Globe, Smartphone, Trophy } from 'lucide-react'
-import { GithubIcon } from './PortfolioIcons'
 
 interface SpreadProps {
   className?: string
@@ -8,262 +6,223 @@ interface SpreadProps {
 
 export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full flex bg-[#faf8f5] text-slate-800 select-none overflow-hidden ${className}`}>
+    <div
+      className={`relative w-full h-full flex overflow-hidden select-text ${className}`}
+      style={{
+        aspectRatio: '16/9',
+        fontFamily: '"Times New Roman", Times, Georgia, serif'
+      }}
+    >
       {/* ========================================================= */}
-      {/* LEFT PAGE: FLAGSHIP PROJECTS • PART I (PAGE 5)            */}
+      {/* LEFT PAGE (~50%): Gingham Notebook with Projects Heading  */}
       {/* ========================================================= */}
-      <div className="w-1/2 h-full flex flex-col justify-between p-6 sm:p-8 pr-7 sm:pr-9 border-r border-slate-200/70 relative">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200/80 pb-2.5">
-          <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase font-semibold">
-            05 / Featured Engineering Systems
-          </span>
-          <span className="text-[10px] font-mono text-blue-700 font-semibold">Decentralized & AI</span>
+      <div
+        className="relative w-1/2 h-full overflow-hidden"
+        style={{
+          backgroundImage: "url('/projects/gingham_tile.png')",
+          backgroundRepeat: 'repeat',
+          backgroundColor: '#ffffff'
+        }}
+      >
+        {/* Torn Notebook Paper Header with spiral binding punch holes & incandescent bulb */}
+        <div
+          className="absolute top-0 left-[2.8%] w-[90.5%] z-20 pointer-events-none drop-shadow-sm select-none"
+          style={{ height: '32.5%' }}
+        >
+          <img
+            src="/projects/header_paper_full.png"
+            alt="Projects notebook header"
+            className="w-full h-full object-contain object-top pointer-events-none"
+          />
+          {/* Accessible semantic heading */}
+          <h2 className="sr-only">Projects</h2>
         </div>
 
-        {/* Title */}
-        <div className="mt-1">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
-            <Layers className="w-5 h-5 text-blue-700" />
-            <span>Distributed & NLP Platforms</span>
-          </h2>
-          <p className="text-[11px] text-slate-500 mt-0.5">
-            Production-grade architectures combining cryptography, real-time sync, and NLP automation.
-          </p>
-        </div>
-
-        {/* 2 Flagship Projects */}
-        <div className="space-y-3.5 my-auto">
-          {/* Project 1: SecureShare */}
-          <div className="bg-white rounded-xl p-3.5 sm:p-4 border border-slate-200/90 shadow-xs hover:border-blue-400 transition-colors">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-slate-900">SecureShare</h3>
-                  <span className="text-[9px] font-mono bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-semibold">
-                    Oct 2025 – Jun 2026
-                  </span>
-                </div>
-                <p className="text-[11px] font-semibold text-blue-700">
-                  Decentralized Secure File Sharing & Communication Platform
-                </p>
-              </div>
-
-              <a
-                href="https://github.com/abhishek-mathpati/SecureShare"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-[10px] font-mono font-semibold text-slate-700 hover:text-black shrink-0 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-md transition-colors"
-              >
-                <GithubIcon className="w-3.5 h-3.5" />
-                <span>Repo</span>
-                <ExternalLink className="w-2.5 h-2.5" />
-              </a>
-            </div>
-
-            <p className="text-[11px] text-slate-600 mt-2 leading-relaxed">
-              Decentralized, tamper-evident messaging platform using blockchain anchoring and IPFS storage, backed by a modular FastAPI backend and hardened Flutter client.
-            </p>
-
-            <ul className="mt-2 space-y-1 text-[10px] sm:text-[11px] text-slate-700">
-              <li className="flex items-start gap-1.5">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>Engineered real-time WebSocket communication enforced by JWT auth, strict RBAC, and admin audit visibility.</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-blue-600 font-bold">•</span>
-                <span>Integrated ephemeral file-sharing controls with anti-screenshot and screen-recording protections.</span>
-              </li>
-            </ul>
-
-            <div className="flex flex-wrap gap-1 mt-2.5 pt-2 border-t border-slate-100">
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Blockchain</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">IPFS</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">FastAPI</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Flutter</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">WebSockets</span>
-            </div>
+        {/* Green Note: SecureShare */}
+        <a
+          href="https://github.com/abhishek-mathpati/SecureShare"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="SecureShare - Decentralized Secure File Sharing & Communication Platform (GitHub)"
+          className="absolute z-20 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-6 rounded-[24px] sm:rounded-[28px] transition-all duration-200 hover:scale-[1.03] hover:shadow-xl active:scale-[0.98] cursor-pointer group"
+          style={{
+            left: '5.5%',
+            top: '33.0%',
+            width: '39.5%',
+            height: '35.6%',
+            backgroundColor: '#d2dfa5',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)',
+            color: '#000000'
+          }}
+        >
+          <div className="leading-[1.26] tracking-normal font-normal text-[clamp(11px,1.55vw,18px)]">
+            <span className="block">SecureShare -</span>
+            <span className="block">Decentralized Secure</span>
+            <span className="block">File Sharing and</span>
+            <span className="block">Communication</span>
+            <span className="block">Platform</span>
           </div>
+        </a>
 
-          {/* Project 2: QPAT */}
-          <div className="bg-white rounded-xl p-3.5 sm:p-4 border border-slate-200/90 shadow-xs hover:border-emerald-400 transition-colors">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-slate-900">QPAT</h3>
-                  <span className="text-[9px] font-mono bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded font-semibold">
-                    Sep 2025 – Feb 2026
-                  </span>
-                </div>
-                <p className="text-[11px] font-semibold text-emerald-700">
-                  Question Paper Automation Tool • Academic Assessment System
-                </p>
-              </div>
-
-              <a
-                href="https://github.com/abhishek-mathpati/Question-Paper-Automation-Tool"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-[10px] font-mono font-semibold text-slate-700 hover:text-black shrink-0 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-md transition-colors"
-              >
-                <GithubIcon className="w-3.5 h-3.5" />
-                <span>Repo</span>
-                <ExternalLink className="w-2.5 h-2.5" />
-              </a>
-            </div>
-
-            <p className="text-[11px] text-slate-600 mt-2 leading-relaxed">
-              Blueprint-driven automated question paper generation platform using a FastAPI backend and Flutter frontend, strictly aligned with academic regulations.
-            </p>
-
-            <ul className="mt-2 space-y-1 text-[10px] sm:text-[11px] text-slate-700">
-              <li className="flex items-start gap-1.5">
-                <span className="text-emerald-600 font-bold">•</span>
-                <span>Integrated NLP-powered semantic analysis, Bloom’s Taxonomy classification, and Course Outcome mapping.</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="text-emerald-600 font-bold">•</span>
-                <span>Automated syntax validation while generating password-protected PDFs alongside BT-level summary analytics.</span>
-              </li>
-            </ul>
-
-            <div className="flex flex-wrap gap-1 mt-2.5 pt-2 border-t border-slate-100">
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">NLP</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Bloom's Taxonomy</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">FastAPI</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Flutter</span>
-              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">PDF Generation</span>
-            </div>
+        {/* Yellow Note: College Website */}
+        <div
+          className="absolute z-20 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-6 rounded-[24px] sm:rounded-[28px] transition-all duration-200 hover:scale-[1.03] hover:shadow-xl cursor-default"
+          style={{
+            left: '51.8%',
+            top: '54.7%',
+            width: '34.2%',
+            height: '30.4%',
+            backgroundColor: '#f9f2a2',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)',
+            color: '#000000'
+          }}
+        >
+          <div className="leading-[1.28] tracking-normal font-normal text-[clamp(14px,1.9vw,22px)]">
+            <span className="block">College</span>
+            <span className="block">Website</span>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200/60">
-          <span>Decentralized Platforms & Assessment Engines</span>
-          <span>Page 5</span>
-        </div>
+        {/* Bottom-left Torn Paper Accent */}
+        <img
+          src="/projects/torn_corner_bl.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 w-[60.5%] pointer-events-none select-none z-10"
+        />
       </div>
 
       {/* ========================================================= */}
-      {/* RIGHT PAGE: FLAGSHIP PROJECTS • PART II (PAGE 6)           */}
+      {/* CENTER SPINE: Subtle Book Fold Shadow                     */}
       {/* ========================================================= */}
-      <div className="w-1/2 h-full flex flex-col justify-between p-6 sm:p-8 pl-7 sm:pl-9 relative">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200/80 pb-2.5">
-          <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase font-semibold">
-            06 / Applied Tools & Hackathons
-          </span>
-          <span className="text-[10px] font-mono text-purple-700 font-semibold">Forensics & Web</span>
-        </div>
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 pointer-events-none z-30 bg-gradient-to-r from-black/20 via-black/5 to-black/20 mix-blend-multiply" />
 
-        {/* Title */}
-        <div className="mt-1">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
-            <Smartphone className="w-5 h-5 text-purple-700" />
-            <span>Forensic & Interactive Applications</span>
-          </h2>
-          <p className="text-[11px] text-slate-500 mt-0.5">
-            Tools built for authorized law enforcement, hackathons, and real-time transit.
-          </p>
-        </div>
+      {/* ========================================================= */}
+      {/* RIGHT PAGE (~50%): Connected Project Flow Cards           */}
+      {/* ========================================================= */}
+      <div
+        className="relative w-1/2 h-full overflow-hidden"
+        style={{
+          backgroundColor: '#ffffff'
+        }}
+      >
+        {/* Top-Right Torn Blue Cardstock Accent */}
+        <img
+          src="/projects/torn_corner_tr.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-0 right-0 w-[67.2%] pointer-events-none select-none z-10"
+        />
 
-        {/* 3 Projects */}
-        <div className="space-y-2.5 my-auto">
-          {/* Project 1: SMIA */}
-          <div className="bg-white rounded-xl p-3 sm:p-3.5 border border-slate-200/90 shadow-xs hover:border-purple-300 transition-colors">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xs sm:text-sm font-bold text-slate-900">SMIA • Law Enforcement Assistant</h3>
-                </div>
-                <p className="text-[10px] sm:text-[11px] font-semibold text-purple-700">
-                  Digital Forensic Documentation Tool (Feb 2025 – Aug 2025)
-                </p>
-              </div>
+        {/* Connected Dashed SVG Flow Lines */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none z-10"
+          viewBox="0 0 512 576"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          {/* Top trail into Blue Card */}
+          <path
+            d="M 64 2 Q 80 28 92 52"
+            stroke="#7a91ba"
+            strokeWidth="2.5"
+            strokeDasharray="9 7"
+            strokeLinecap="round"
+          />
+          {/* Blue Card to Orange Card */}
+          <path
+            d="M 235 160 Q 255 185 288 220"
+            stroke="#7a91ba"
+            strokeWidth="2.5"
+            strokeDasharray="9 7"
+            strokeLinecap="round"
+          />
+          {/* Orange Card to Purple Card */}
+          <path
+            d="M 282 300 Q 235 330 200 368"
+            stroke="#7a91ba"
+            strokeWidth="2.5"
+            strokeDasharray="9 7"
+            strokeLinecap="round"
+          />
+          {/* Purple Card trailing out bottom-right */}
+          <path
+            d="M 304 518 Q 400 532 512 546"
+            stroke="#7a91ba"
+            strokeWidth="2.5"
+            strokeDasharray="9 7"
+            strokeLinecap="round"
+          />
+        </svg>
 
-              <a
-                href="https://github.com/abhishek-mathpati/social-media-investigative-assistant-for-law-enforcement"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-[9px] font-mono font-semibold text-slate-700 hover:text-black shrink-0 bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded transition-colors"
-              >
-                <GithubIcon className="w-3 h-3" />
-                <span>Repo</span>
-              </a>
-            </div>
-
-            <p className="text-[10px] sm:text-[11px] text-slate-600 mt-1 leading-normal">
-              Flutter forensic application enabling structured, case-oriented social media analysis for authorized law enforcement. Engineered timestamp-validated screenshot evidence capture with automated court-admissible PDF reports.
-            </p>
-
-            <div className="flex flex-wrap gap-1 mt-1.5">
-              <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 text-[9px] font-mono">Flutter</span>
-              <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 text-[9px] font-mono">Zero-Scraping Compliance</span>
-              <span className="px-1.5 py-0.2 rounded bg-purple-50 text-purple-700 text-[9px] font-mono">Encrypted Local DB</span>
-            </div>
-          </div>
-
-          {/* Project 2: College Portal (Hackathon Winner) */}
-          <div className="bg-white rounded-xl p-3 sm:p-3.5 border border-slate-200/90 shadow-xs hover:border-amber-300 transition-colors">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <Trophy className="w-3.5 h-3.5 text-amber-600" />
-                  <h3 className="text-xs sm:text-sm font-bold text-slate-900">College Web Portal</h3>
-                  <span className="text-[9px] font-mono bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded font-bold">
-                    1st Place (30+ Teams)
-                  </span>
-                </div>
-                <p className="text-[10px] sm:text-[11px] font-semibold text-amber-700">
-                  National-Level Hackathon Winner (Feb 2024 – May 2024)
-                </p>
-              </div>
-            </div>
-
-            <p className="text-[10px] sm:text-[11px] text-slate-600 mt-1 leading-normal">
-              Designed a responsive, high-performance college web portal using HTML, CSS, and JavaScript. Outperformed 30+ competing teams in a national hackathon with sub-second page loads and accessible UI.
-            </p>
-
-            <div className="flex flex-wrap gap-1 mt-1.5">
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">HTML5 / CSS3</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Vanilla JavaScript</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Web Performance</span>
-            </div>
-          </div>
-
-          {/* Project 3: Park Hub */}
-          <div className="bg-white rounded-xl p-3 sm:p-3.5 border border-slate-200/90 shadow-xs hover:border-blue-300 transition-colors">
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <h3 className="text-xs sm:text-sm font-bold text-slate-900">Park Hub: Smart Parking System</h3>
-                <p className="text-[10px] sm:text-[11px] font-semibold text-blue-700">
-                  Urban Mobility Mobile App (Oct 2023 – Feb 2024)
-                </p>
-              </div>
-            </div>
-
-            <p className="text-[10px] sm:text-[11px] text-slate-600 mt-1 leading-normal">
-              Smart urban parking application using Flutter and Firebase. Features real-time spot availability, dynamic pricing models, interactive mapping, and secure payment processing.
-            </p>
-
-            <div className="flex flex-wrap gap-1 mt-1.5">
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Flutter</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Firebase</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[9px] font-mono">Interactive Maps</span>
-            </div>
+        {/* Blue Card: SMIA */}
+        <div
+          className="absolute z-20 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-6 rounded-[24px] sm:rounded-[28px] transition-all duration-200 hover:scale-[1.03] hover:shadow-xl cursor-default"
+          style={{
+            left: '6.5%',
+            top: '9.0%',
+            width: '39.1%',
+            height: '34.7%',
+            backgroundColor: '#accee9',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)',
+            color: '#000000'
+          }}
+        >
+          <div className="leading-[1.26] tracking-normal font-normal text-[clamp(11.5px,1.55vw,18px)]">
+            <span className="block">Social Media</span>
+            <span className="block">Investigative Assistant</span>
+            <span className="block">(SMIA)</span>
+            <span className="block">Digital Forensic</span>
+            <span className="block">Documentation Tool</span>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono pt-2 border-t border-slate-200/60">
-          <span>Forensics, Mobility & Web Architecture</span>
-          <span>Page 6</span>
+        {/* Orange Card: QPAT */}
+        <a
+          href="https://github.com/abhishek-mathpati/Question-Paper-Automation-Tool"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Question Paper Automation Tool (QPAT) - GitHub"
+          className="absolute z-20 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-6 rounded-[24px] sm:rounded-[28px] transition-all duration-200 hover:scale-[1.03] hover:shadow-xl active:scale-[0.98] cursor-pointer group"
+          style={{
+            left: '56.3%',
+            top: '29.5%',
+            width: '37.1%',
+            height: '33.0%',
+            backgroundColor: '#f3bd91',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)',
+            color: '#000000'
+          }}
+        >
+          <div className="leading-[1.26] tracking-normal font-normal text-[clamp(11px,1.5vw,17.5px)]">
+            <span className="block">Question Paper</span>
+            <span className="block">Automation Tool</span>
+            <span className="block">(QPAT) | Automated</span>
+            <span className="block">Academic Assessment</span>
+            <span className="block">System</span>
+          </div>
+        </a>
+
+        {/* Purple Card: Park Hub */}
+        <div
+          className="absolute z-20 flex flex-col items-center justify-center text-center p-3 sm:p-4 md:p-6 rounded-[24px] sm:rounded-[28px] transition-all duration-200 hover:scale-[1.03] hover:shadow-xl cursor-default"
+          style={{
+            left: '17.2%',
+            top: '63.9%',
+            width: '38.1%',
+            height: '33.3%',
+            backgroundColor: '#cebddd',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)',
+            color: '#000000'
+          }}
+        >
+          <div className="leading-[1.28] tracking-normal font-normal text-[clamp(12px,1.65vw,19px)]">
+            <span className="block">Park Hub: Parking</span>
+            <span className="block">Management</span>
+            <span className="block">System</span>
+          </div>
         </div>
       </div>
     </div>
   )
 }
-

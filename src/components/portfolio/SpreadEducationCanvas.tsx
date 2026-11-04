@@ -7,9 +7,12 @@ interface SpreadProps {
 export const SpreadEducationCanvas: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
     <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
+      {/* High-Resolution Master Export from Designs/Page1.png */}
       <img
-        src="/designs/Page1.png"
+        src="/designs/Page1.png?v=hd"
         alt="Education Spread"
+        loading="eager"
+        fetchPriority="high"
         className="w-full h-full object-fill pointer-events-none select-none"
       />
     </div>

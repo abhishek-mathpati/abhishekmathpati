@@ -6,7 +6,9 @@ import { SpreadProfileEducation } from './portfolio/SpreadProfileEducation'
 import { SpreadExperienceResearch } from './portfolio/SpreadExperienceResearch'
 import { SpreadPublications } from './portfolio/SpreadPublications'
 import { SpreadProjects } from './portfolio/SpreadProjects'
-import { SpreadSkillsHonors } from './portfolio/SpreadSkillsHonors'
+import { SpreadSkills } from './portfolio/SpreadSkills'
+import { SpreadCertifications } from './portfolio/SpreadCertifications'
+import { SpreadAwardsVolunteering } from './portfolio/SpreadAwardsVolunteering'
 import { SpreadContact } from './portfolio/SpreadContact'
 
 interface PageRendererProps {
@@ -37,10 +39,16 @@ export const PageRenderer: React.FC<PageRendererProps> = ({
   if (page.id === 'page-4' || page.customLayout === 'projects') {
     return <SpreadProjects className={className} />
   }
-  if (page.id === 'page-5' || page.customLayout === 'skills-honors') {
-    return <SpreadSkillsHonors className={className} />
+  if (page.id === 'page-5' || page.customLayout === 'skills' || page.customLayout === 'skills-honors') {
+    return <SpreadSkills className={className} />
   }
-  if (page.id === 'page-6' || page.customLayout === 'contact') {
+  if (page.id === 'page-6' || page.customLayout === 'certifications') {
+    return <SpreadCertifications className={className} />
+  }
+  if (page.id === 'page-7' || page.customLayout === 'awards-volunteering' || page.customLayout === 'awards' || page.customLayout === 'volunteering') {
+    return <SpreadAwardsVolunteering className={className} />
+  }
+  if (page.id === 'page-8' || page.customLayout === 'contact' || page.customLayout === 'languages-contact') {
     return <SpreadContact className={className} />
   }
 

@@ -7,9 +7,9 @@ interface SpreadProps {
 export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
     <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
-      {/* 2K High-Definition Base Spread */}
+      {/* High-Definition Master Design */}
       <img
-        src="/publications/publications_spread_2k.jpg"
+        src="/designs/Page3.png"
         alt="Publications Spread"
         className="w-full h-full object-fill pointer-events-none select-none"
       />
@@ -50,4 +50,3 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
     </div>
   )
 }
-

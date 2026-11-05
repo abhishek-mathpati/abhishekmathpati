@@ -110,7 +110,7 @@ export const SpreadProfileEducation: React.FC<SpreadProps> = ({ className = '' }
             <span>abhishek-mathpati</span>
           </a>
           <a
-            href="https://linkedin.com/in/abhishek-mathpati"
+            href="https://www.linkedin.com/in/mathpati-abhishek-b654b2296/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

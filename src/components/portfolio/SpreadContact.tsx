@@ -25,60 +25,59 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open GitHub Profile"
-        className="absolute z-10 cursor-pointer rounded-full transition-all duration-200 hover:outline hover:outline-2 hover:outline-black/50 hover:shadow-lg hover:scale-110 active:scale-95"
+        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
         style={{
-          left: '61.8%',
-          top: '46.3%',
-          width: '3.0%',
-          height: '5.2%'
+          left: '63.333%',
+          top: '49.074%',
+          width: '3.5%',
+          aspectRatio: '1 / 1'
         }}
         aria-label="GitHub Profile"
       />
 
-      {/* Interactive Button: Contact / Send Email Modal */}
-      <button
-        type="button"
-        onClick={() => setIsModalOpen(true)}
-        title="Send a Direct Message"
-        className="absolute z-10 cursor-pointer rounded-full transition-all duration-200 hover:outline hover:outline-2 hover:outline-blue-500/60 hover:shadow-lg hover:scale-110 active:scale-95 bg-transparent"
+      {/* Interactive Link: Email (mailto) */}
+      <a
+        href="mailto:abhishekmathpati2027@gmail.com"
+        title="Send Email (abhishekmathpati2027@gmail.com)"
+        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
         style={{
-          left: '65.4%',
-          top: '46.3%',
-          width: '3.0%',
-          height: '5.2%'
+          left: '67.240%',
+          top: '49.120%',
+          width: '3.5%',
+          aspectRatio: '1 / 1'
         }}
-        aria-label="Send Direct Message"
+        aria-label="Send Email"
       />
 
       {/* Interactive Link: LinkedIn Profile */}
       <a
-        href="https://www.linkedin.com/in/abhishekmathpati"
+        href="https://www.linkedin.com/in/mathpati-abhishek-b654b2296/"
         target="_blank"
         rel="noopener noreferrer"
         title="Open LinkedIn Profile"
-        className="absolute z-10 cursor-pointer rounded-full transition-all duration-200 hover:outline hover:outline-2 hover:outline-blue-600/60 hover:shadow-lg hover:scale-110 active:scale-95"
+        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
         style={{
-          left: '69.0%',
-          top: '46.3%',
-          width: '3.0%',
-          height: '5.2%'
+          left: '71.146%',
+          top: '49.120%',
+          width: '3.5%',
+          aspectRatio: '1 / 1'
         }}
         aria-label="LinkedIn Profile"
       />
 
       {/* Interactive Link: Download CV / Resume */}
       <a
-        href="/resume.pdf"
+        href="/Abhishek_Mathpati_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        download="Abhishek_Mathpati_Resume.pdf"
-        title="Download Curriculum Vitae (PDF)"
-        className="absolute z-10 cursor-pointer rounded-full transition-all duration-200 hover:outline hover:outline-2 hover:outline-black/50 hover:shadow-lg hover:scale-[1.04] active:scale-95"
+        download="Abhishek_Mathpati_CV.pdf"
+        title="Download CV (PDF)"
+        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-[1.03] active:scale-95"
         style={{
-          left: '63.2%',
-          top: '52.7%',
-          width: '8.2%',
-          height: '5.2%'
+          left: '67.240%',
+          top: '55.185%',
+          width: '8.44%',
+          height: '5.00%'
         }}
         aria-label="Download CV"
       />

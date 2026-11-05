@@ -104,22 +104,24 @@ export const BookStage: React.FC<BookStageProps> = ({
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative flex-1 w-full flex items-center justify-center px-4 sm:px-8 py-4 overflow-visible select-none perspective-stage"
+      className="relative flex-1 w-full flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 overflow-visible select-none perspective-stage"
     >
       {/* ========================================================
           UNIFIED 3D STAGE CONTAINER: OPEN & CLOSED BOOKS SHARE
-          THE EXACT SAME EXPANDED BOUNDING DIMENSIONS (1150px x 720px)
+          THE EXACT SAME EXPANDED BOUNDING DIMENSIONS
       ======================================================== */}
       <div
         style={{
           transform:
             mouseTilt.x === 0 && mouseTilt.y === 0
-              ? 'none'
-              : `rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
+              ? 'perspective(1000px) rotateX(0deg) rotateY(0deg)' // Forces 3D baseline matrix
+              : `perspective(1000px) rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
           transition: 'transform 0.25s ease-out',
-          transformStyle: mouseTilt.x === 0 && mouseTilt.y === 0 ? 'flat' : 'preserve-3d',
+          transformStyle: 'preserve-3d', // Permanently set to preserve-3d (Removes conditional check)
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
         }}
-        className="relative w-[95vw] sm:w-[92vw] max-w-[1150px] aspect-[1.56/1] max-h-[720px] flex items-center justify-center crisp-page"
+        className="relative w-[96vw] sm:w-[94vw] max-w-[1280px] aspect-[1.56/1] max-h-[calc(100vh-130px)] 2xl:max-h-[800px] flex items-center justify-center crisp-page"
       >
         {isClosed ? (
           /* ========================================================

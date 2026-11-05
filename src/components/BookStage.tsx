@@ -110,18 +110,26 @@ export const BookStage: React.FC<BookStageProps> = ({
       className="relative flex-1 w-full flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 overflow-visible select-none"
     >
       {/* ========================================================
-          UNIFIED STAGE CONTAINER: OPEN & CLOSED BOOKS SHARE
-          THE EXACT SAME EXPANDED BOUNDING DIMENSIONS
+          STAGE CONTAINER: 
+          - Closed Book: True portrait closed book proportions (aspect-[3/4])
+          - Open Book: Full double-page landscape spread (aspect-[16/9])
       ======================================================== */}
       <div
         style={{
           transform: 'none',
+          ...(isClosed ? {
+            width: 'min(calc((100vh - 140px) * 0.75), 540px, 92vw)'
+          } : {})
         }}
-        className="relative w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px] flex items-center justify-center"
+        className={`relative flex items-center justify-center transition-all duration-500 ease-out ${
+          isClosed
+            ? 'aspect-[3/4] max-h-[calc(100vh-140px)] 2xl:max-h-[780px]'
+            : 'w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px]'
+        }`}
       >
         {isClosed ? (
           /* ========================================================
-              STATE 1: BOOK CLOSED (Rich Hardcover Matching Open Size)
+              STATE 1: BOOK CLOSED (Rich Hardcover Single-Volume Dimensions)
           ======================================================== */
           <ClosedBookCover
             onOpen={() => {

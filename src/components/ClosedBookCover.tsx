@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ChevronRight } from 'lucide-react'
 
 export interface ClosedBookCoverFaceProps {
   isInteractive?: boolean
@@ -88,7 +87,7 @@ export const ClosedBookCover: React.FC<ClosedBookCoverProps> = ({
       {/* MAIN HARDCOVER FRONT */}
       <ClosedBookCoverFace isInteractive={false} />
 
-      {/* NEXT PAGE / OPEN BOOK FLOATING BUTTON & PILL BADGE (Exact style from next page & prev page) */}
+      {/* FLOATING "OPEN" PILL BADGE (Exact style from next page & prev page, without arrow) */}
       <div
         onClick={(e) => {
           e.stopPropagation()
@@ -96,46 +95,30 @@ export const ClosedBookCover: React.FC<ClosedBookCoverProps> = ({
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        title="Next Page"
-        className={`absolute -right-16 sm:-right-24 md:-right-28 lg:-right-32 xl:-right-36 top-1/2 -translate-y-1/2 z-50 flex items-center gap-3 flex-row-reverse cursor-pointer select-none transition-transform duration-300 ease-out ${
-          isHovered ? 'translate-x-2' : 'translate-x-0'
+        title="Open"
+        className={`absolute -right-12 sm:-right-16 md:-right-20 top-1/2 -translate-y-1/2 z-50 flex items-center cursor-pointer select-none transition-transform duration-300 ease-out ${
+          isHovered ? 'translate-x-1' : 'translate-x-0'
         }`}
       >
-        {/* Button Wrapper with Ambient Light Halo */}
-        <div className="relative flex items-center justify-center">
-          {/* Ambient Glow Aura */}
-          <div
-            className={`absolute -inset-2.5 rounded-full blur-md transition-all duration-300 pointer-events-none ${
-              isHovered
-                ? 'opacity-100 bg-white/15 scale-110'
-                : 'opacity-0 scale-90'
-            }`}
-          />
-
-          {/* Frosted Acrylic Button */}
-          <button
-            type="button"
-            aria-label="Next Page"
-            className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border shadow-xl ${
-              isHovered
-                ? 'backdrop-blur-xl bg-stone-900/85 border-white/45 text-white shadow-[0_0_25px_rgba(255,255,255,0.18),0_10px_30px_rgba(0,0,0,0.5)] scale-110'
-                : 'backdrop-blur-md bg-stone-900/50 border-white/20 text-stone-300 shadow-[0_4px_18px_rgba(0,0,0,0.35)] scale-100'
-            } active:scale-95`}
-          >
-            <ChevronRight className={`w-7 h-7 stroke-[2.2] transition-transform duration-300 ${isHovered ? 'translate-x-0.5 scale-110' : 'translate-x-0 scale-100'}`} />
-          </button>
-        </div>
+        {/* Ambient Glow Aura */}
+        <div
+          className={`absolute -inset-2 rounded-full blur-md transition-all duration-300 pointer-events-none ${
+            isHovered
+              ? 'opacity-100 bg-white/15 scale-105'
+              : 'opacity-0 scale-90'
+          }`}
+        />
 
         {/* Refined Pill Badge */}
         <div
-          className={`transition-all duration-300 ease-out backdrop-blur-md px-3.5 py-1.5 rounded-full border whitespace-nowrap hidden sm:flex items-center gap-1.5 shadow-xl pointer-events-none select-none ${
+          className={`transition-all duration-300 ease-out backdrop-blur-md px-4 py-2 rounded-full border whitespace-nowrap flex items-center shadow-xl ${
             isHovered
-              ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-white/30 text-white shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(255,255,255,0.1)]'
-              : 'opacity-0 -translate-x-3 scale-95 bg-stone-900/40 border-white/10 text-stone-400'
+              ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-white/35 text-white shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95'
+              : 'opacity-0 -translate-x-3 scale-95 bg-stone-900/40 border-white/10 text-stone-400 pointer-events-none'
           }`}
         >
           <span className="text-[11px] font-sans font-medium tracking-wider uppercase">
-            Next Page ›
+            Open
           </span>
         </div>
       </div>

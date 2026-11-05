@@ -23,15 +23,15 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System with Privacy-Preserving Access Control (ICSSEECC 2026)"
         aria-label="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System"
-        className="group absolute z-10 cursor-pointer select-none -translate-x-1/2 -translate-y-1/2 rotate-[-0.4deg] transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
+        className="group absolute z-10 cursor-pointer select-none transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
-          left: '37.370%',
-          top: '85.880%',
-          width: '22.396%',
-          height: '12.593%'
+          left: '26.1979%',
+          top: '79.6296%',
+          width: '22.3958%',
+          height: '12.5926%'
         }}
       >
-        {/* Exact Original Tape & Text: Straight Pop-Up Only matching Contacts page */}
+        {/* Exact Original Tape & Text: Straight Pop-Up Matching Page 8 Architecture */}
         <img
           src="/designs/publications/tape_pop_green.png"
           alt="Read The Paper"
@@ -46,15 +46,15 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics (ICCIC 2025)"
         aria-label="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics"
-        className="group absolute z-10 cursor-pointer select-none -translate-x-1/2 -translate-y-1/2 rotate-[-5.9deg] transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
+        className="group absolute z-10 cursor-pointer select-none transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
-          left: '62.526%',
-          top: '46.574%',
-          width: '22.188%',
-          height: '12.500%'
+          left: '51.0417%',
+          top: '41.6667%',
+          width: '22.9167%',
+          height: '11.1111%'
         }}
       >
-        {/* Exact Original Tape & Text: Straight Pop-Up Only matching Contacts page */}
+        {/* Exact Original Tape & Text: 100% Bit-for-Bit Congruent with Zero Rotation Offset */}
         <img
           src="/designs/publications/tape_pop_blue.png"
           alt="Read The Paper"
@@ -66,10 +66,10 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
       <div
         title="Status: Accepted to appear in IEEE Xplore (ISDDC - 2026)"
         aria-label="Accepted to appear in IEEE Xplore (ISDDC - 2026)"
-        className="absolute z-10 cursor-default select-none -translate-x-1/2 -translate-y-1/2"
+        className="absolute z-10 cursor-default select-none"
         style={{
-          left: '61.6%',
-          top: '85.8%',
+          left: '56.35%',
+          top: '78.05%',
           width: '10.5%',
           height: '15.5%'
         }}

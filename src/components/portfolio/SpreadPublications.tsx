@@ -23,7 +23,7 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System with Privacy-Preserving Access Control (ICSSEECC 2026)"
         aria-label="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System"
-        className="absolute z-10 cursor-pointer select-none transition-transform duration-200 ease-out active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer select-none"
         style={{
           left: '37.370%',
           top: '85.880%',
@@ -31,7 +31,14 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
           height: '12.593%',
           transform: 'translate(-50%, -50%) rotate(-0.4deg)'
         }}
-      />
+      >
+        {/* Popping Text: Pops up a little bit straight on hover */}
+        <img
+          src="/designs/publications/pop_text_green.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110 active:scale-95 drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+        />
+      </a>
 
       {/* 2. Interactive Blue Tape: "Read The Paper" (ICCIC 2025 - IJRDET) */}
       <a
@@ -40,7 +47,7 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics (ICCIC 2025)"
         aria-label="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics"
-        className="absolute z-10 cursor-pointer select-none transition-transform duration-200 ease-out active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer select-none"
         style={{
           left: '62.526%',
           top: '46.574%',
@@ -48,7 +55,14 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
           height: '12.500%',
           transform: 'translate(-50%, -50%) rotate(-5.9deg)'
         }}
-      />
+      >
+        {/* Popping Text: Pops up a little bit straight on hover */}
+        <img
+          src="/designs/publications/pop_text_blue.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110 active:scale-95 drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+        />
+      </a>
 
       {/* 3. Bottom-Right Paper Note Tooltip: Accepted, To Appear in IEEE Xplore (ISDDC 2026) */}
       <div

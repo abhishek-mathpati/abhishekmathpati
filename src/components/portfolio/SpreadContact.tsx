@@ -34,14 +34,11 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         }}
         aria-label="GitHub Profile"
       >
-        {/* Soft Ambient Halo Glow (like turning arrows) */}
-        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-        {/* Hover Icon with Filled White Octocat - straight pop-up */}
+        {/* Exact Original Icon - Straight Pop-Up Only */}
         <img
-          src="/designs/contact/icon_hover_gh.png"
+          src="/designs/contact/icon_pop_gh.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
       </a>
 
@@ -59,14 +56,11 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         }}
         aria-label="Send Direct Message"
       >
-        {/* Soft Ambient Halo Glow */}
-        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-        {/* Hover Icon with Filled White Envelope - straight pop-up */}
+        {/* Exact Original Icon - Straight Pop-Up Only */}
         <img
-          src="/designs/contact/icon_hover_em.png"
+          src="/designs/contact/icon_pop_em.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
       </button>
 
@@ -85,14 +79,11 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         }}
         aria-label="LinkedIn Profile"
       >
-        {/* Soft Ambient Halo Glow with subtle blue tint */}
-        <div className="absolute -inset-2 rounded-full bg-blue-400/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-        {/* Hover Icon with Filled White 'in' - straight pop-up */}
+        {/* Exact Original Icon - Straight Pop-Up Only */}
         <img
-          src="/designs/contact/icon_hover_li.png"
+          src="/designs/contact/icon_pop_li.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
       </a>
 
@@ -112,14 +103,11 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         }}
         aria-label="Download CV"
       >
-        {/* Soft Ambient Halo Glow around the pill */}
-        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-        {/* Hover Icon with Filled White Cloud, Arrow & 'CV' - straight pop-up */}
+        {/* Exact Original Icon - Straight Pop-Up Only */}
         <img
-          src="/designs/contact/icon_hover_cv.png"
+          src="/designs/contact/icon_pop_cv.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
       </a>
 

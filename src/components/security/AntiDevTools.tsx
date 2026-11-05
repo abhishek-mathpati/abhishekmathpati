@@ -83,10 +83,9 @@ export function AntiDevTools({ immediateRedirect = false }: AntiDevToolsProps) {
       }
     };
 
-    // 3. Right-Click Context Menu Block
+    // 3. Right-Click Context Menu Block (Silently disabled to prevent accidental lockout)
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-      triggerLock();
     };
 
     window.addEventListener('keydown', handleKeyDown);

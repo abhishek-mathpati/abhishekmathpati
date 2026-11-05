@@ -1,0 +1,5 @@
+# Cloudflare Pages local development variables (used by wrangler pages dev)
+RESEND_API_KEY=re_123456789_abcdef
+CONTACT_EMAIL=abhishekmathpati2027@gmail.com
+EMAIL_FROM=Portfolio Contact <onboarding@resend.dev>
+

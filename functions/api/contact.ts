@@ -1,6 +1,7 @@
 interface Env {
   RESEND_API_KEY?: string;
   CONTACT_EMAIL?: string;
+  EMAIL_FROM?: string;
 }
 
 const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
@@ -91,6 +92,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // 5. Send with Resend REST API (Edge compatible)
     const apiKey = env.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : '');
     const recipientEmail = env.CONTACT_EMAIL || (typeof process !== 'undefined' ? process.env?.CONTACT_EMAIL : '') || 'abhishekmathpati2027@gmail.com';
+    const rawFrom = env.EMAIL_FROM || (typeof process !== 'undefined' ? process.env?.EMAIL_FROM : '') || 'Portfolio Contact <onboarding@resend.dev>';
+    const fromAddress = rawFrom.includes('<') ? rawFrom : `Portfolio Contact <${rawFrom}>`;
 
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'RESEND_API_KEY not configured on server' }), {
@@ -106,7 +109,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
+        from: fromAddress,
         to: recipientEmail,
         reply_to: email,
         subject: `New Portfolio Message from ${name}`,

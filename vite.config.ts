@@ -32,6 +32,8 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
 
             const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY || '';
             const recipientEmail = env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'abhishekmathpati2027@gmail.com';
+            const rawFrom = env.EMAIL_FROM || process.env.EMAIL_FROM || 'Portfolio Contact <onboarding@resend.dev>';
+            const fromAddress = rawFrom.includes('<') ? rawFrom : `Portfolio Contact <${rawFrom}>`;
 
             if (!apiKey || apiKey.startsWith('re_123456789')) {
               // Simulated success in dev if using placeholder key
@@ -48,7 +50,7 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
             const { Resend } = await import('resend');
             const resend = new Resend(apiKey);
             const sendResult = await resend.emails.send({
-              from: 'Portfolio Contact <onboarding@resend.dev>',
+              from: fromAddress,
               to: recipientEmail,
               replyTo: email,
               subject: `New Portfolio Message from ${name}`,

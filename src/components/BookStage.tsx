@@ -242,7 +242,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                     }
                   }}
                   title={currentIndex === 0 ? "Close Book" : "Previous Page"}
-                  className="absolute -left-12 sm:-left-16 md:-left-20 lg:-left-24 z-50 flex items-center gap-2.5 cursor-pointer group/left-btn pointer-events-none"
+                  className="absolute -left-16 sm:-left-24 md:-left-28 lg:-left-32 xl:-left-36 z-50 flex items-center gap-2.5 cursor-pointer group/left-btn pointer-events-none"
                 >
                   <button
                     type="button"
@@ -280,7 +280,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                     <div
                       onClick={() => onStartTurn('next')}
                       title="Next Page"
-                      className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-24 z-50 flex items-center gap-2.5 cursor-pointer group/right-btn flex-row-reverse pointer-events-none"
+                      className="absolute -right-16 sm:-right-24 md:-right-28 lg:-right-32 xl:-right-36 z-50 flex items-center gap-2.5 cursor-pointer group/right-btn flex-row-reverse pointer-events-none"
                     >
                       <button
                         type="button"

@@ -34,26 +34,8 @@ export const BookStage: React.FC<BookStageProps> = ({
   isClosed,
   onToggleBook
 }) => {
-  const [mouseTilt, setMouseTilt] = useState({ x: 0, y: 0 })
   const stageRef = useRef<HTMLDivElement>(null)
   const dragStartX = useRef<number | null>(null)
-
-  // Subtle 3D mouse parallax tilt
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!tiltEnabled) return
-    if (!stageRef.current) return
-    const rect = stageRef.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    setMouseTilt({
-      x: -y * 3.5,
-      y: x * 5
-    })
-  }
-
-  const handleMouseLeave = () => {
-    setMouseTilt({ x: 0, y: 0 })
-  }
 
   // Touch and drag swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -100,24 +82,17 @@ export const BookStage: React.FC<BookStageProps> = ({
   return (
     <div
       ref={stageRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative flex-1 w-full flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 overflow-visible select-none perspective-stage"
+      className="relative flex-1 w-full flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 overflow-visible select-none"
     >
       {/* ========================================================
-          UNIFIED 3D STAGE CONTAINER: OPEN & CLOSED BOOKS SHARE
+          UNIFIED STAGE CONTAINER: OPEN & CLOSED BOOKS SHARE
           THE EXACT SAME EXPANDED BOUNDING DIMENSIONS
       ======================================================== */}
       <div
         style={{
-          transform:
-            mouseTilt.x === 0 && mouseTilt.y === 0
-              ? 'none'
-              : `rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
-          transition: 'transform 0.25s ease-out',
-          transformStyle: mouseTilt.x === 0 && mouseTilt.y === 0 ? 'flat' : 'preserve-3d',
+          transform: 'none',
         }}
         className="relative w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px] flex items-center justify-center"
       >
@@ -130,7 +105,6 @@ export const BookStage: React.FC<BookStageProps> = ({
               sound.playPaperTurn(true)
               onToggleBook(false)
             }}
-            tilt={mouseTilt}
             tiltEnabled={tiltEnabled}
           />
         ) : (

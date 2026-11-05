@@ -6,14 +6,14 @@ interface SpreadProps {
 
 export const SpreadSkills: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
+    <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
       {/* High-Resolution Design from Designs/Page5.png */}
       <img
-        src="/designs/Page5.png?v=2"
+        src="/designs/Page5.png?v=3"
         alt="Skills Spread"
         loading="eager"
-        fetchPriority="high"
-        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
+        decoding="async"
+        className="w-full h-full object-contain pointer-events-none select-none"
       />
     </div>
   )

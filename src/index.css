@@ -186,12 +186,9 @@ body {
   text-rendering: geometricPrecision;
 }
 
-/* Global Crisp Image and Content Rendering: No Blurring Anywhere */
-img, .crisp-page {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  filter: none !important;
+/* High-Quality Smooth Image Rendering */
+img {
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -114,14 +114,12 @@ export const BookStage: React.FC<BookStageProps> = ({
         style={{
           transform:
             mouseTilt.x === 0 && mouseTilt.y === 0
-              ? 'perspective(1000px) rotateX(0deg) rotateY(0deg)' // Forces 3D baseline matrix
-              : `perspective(1000px) rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
+              ? 'none'
+              : `rotateX(${mouseTilt.x}deg) rotateY(${mouseTilt.y}deg)`,
           transition: 'transform 0.25s ease-out',
-          transformStyle: 'preserve-3d', // Permanently set to preserve-3d (Removes conditional check)
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden',
+          transformStyle: mouseTilt.x === 0 && mouseTilt.y === 0 ? 'flat' : 'preserve-3d',
         }}
-        className="relative w-[96vw] sm:w-[94vw] max-w-[1280px] aspect-[1.56/1] max-h-[calc(100vh-130px)] 2xl:max-h-[800px] flex items-center justify-center crisp-page"
+        className="relative w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px] flex items-center justify-center"
       >
         {isClosed ? (
           /* ========================================================
@@ -217,7 +215,7 @@ export const BookStage: React.FC<BookStageProps> = ({
               style={{
                 zIndex: 40,
               }}
-              className="absolute inset-0 rounded-[20px] sm:rounded-[24px] crisp-page"
+              className="absolute inset-0 rounded-[20px] sm:rounded-[24px]"
             >
               {isTurning && targetPage && turnDirection ? (
                 <PageTurnAnimation

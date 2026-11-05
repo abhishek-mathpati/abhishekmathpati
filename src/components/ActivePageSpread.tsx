@@ -19,10 +19,10 @@ export const ActivePageSpread: React.FC<ActivePageSpreadProps> = ({
 }) => {
   return (
     <div
-      className={`relative w-full h-full rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl select-none bg-[#fbf9f5] crisp-page ${className}`}
+      className={`relative w-full h-full rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl select-none bg-[#fbf9f5] ${className}`}
     >
       {/* Seamless Full Spread Content Canvas */}
-      <div className="absolute inset-0 w-full h-full crisp-page">
+      <div className="absolute inset-0 w-full h-full">
         <PageRenderer page={page} />
       </div>
 

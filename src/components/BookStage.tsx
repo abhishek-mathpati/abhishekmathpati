@@ -4,6 +4,7 @@ import { BookPageLayer } from './BookPageLayer'
 import { ActivePageSpread } from './ActivePageSpread'
 import { PageTurnAnimation } from './PageTurnAnimation'
 import { ClosedBookCover } from './ClosedBookCover'
+import { BookOpeningAnimation } from './BookOpeningAnimation'
 import { ChevronLeft, ChevronRight, Book } from 'lucide-react'
 import { sound } from '../utils/sound'
 
@@ -18,6 +19,9 @@ interface BookStageProps {
   onStartTurn: (direction: 'next' | 'prev') => void
   tiltEnabled?: boolean
   isClosed: boolean
+  coverAnimation: 'open' | 'close' | null
+  onOpenBook: () => void
+  onCoverAnimationComplete: () => void
   onToggleBook: (closed?: boolean) => void
 }
 
@@ -32,6 +36,9 @@ export const BookStage: React.FC<BookStageProps> = ({
   onStartTurn,
   tiltEnabled = true,
   isClosed,
+  coverAnimation,
+  onOpenBook,
+  onCoverAnimationComplete,
   onToggleBook
 }) => {
   const stageRef = useRef<HTMLDivElement>(null)
@@ -111,36 +118,37 @@ export const BookStage: React.FC<BookStageProps> = ({
     >
       {/* ========================================================
           STAGE CONTAINER: 
-          - Closed Book: True portrait closed book proportions (aspect-[3/4])
-          - Open Book: Full double-page landscape spread (aspect-[16/9])
+          - Unified 16:9 double-page spread dimensions
+          - When closed, the closed book is centered (w-1/2 mx-auto)
+          - When opening/closing, the 3D book animation plays
+          - When open, the full active spread and navigation layers render
       ======================================================== */}
       <div
         style={{
           transform: 'none',
-          ...(isClosed ? {
-            width: 'min(calc((100vh - 140px) * 0.75), 540px, 92vw)'
-          } : {})
         }}
-        className={`relative flex items-center justify-center transition-all duration-500 ease-out ${
-          isClosed
-            ? 'aspect-[3/4] max-h-[calc(100vh-140px)] 2xl:max-h-[780px]'
-            : 'w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px]'
-        }`}
+        className="relative w-[96vw] sm:w-[94vw] max-w-[1360px] aspect-[16/9] max-h-[calc(100vh-130px)] 2xl:max-h-[820px] flex items-center justify-center"
       >
-        {isClosed ? (
+        {coverAnimation ? (
           /* ========================================================
-              STATE 1: BOOK CLOSED (Rich Hardcover Single-Volume Dimensions)
+              STATE 1: 3D BOOK COVER OPENING / CLOSING ANIMATION
+              The book moves to the right and opens the first page!
+          ======================================================== */
+          <BookOpeningAnimation
+            firstPage={pages[0]}
+            direction={coverAnimation}
+            onComplete={onCoverAnimationComplete}
+          />
+        ) : isClosed ? (
+          /* ========================================================
+              STATE 2: BOOK CLOSED (Single-volume hardcover centered)
           ======================================================== */
           <ClosedBookCover
-            onOpen={() => {
-              sound.playPaperTurn(true)
-              onToggleBook(false)
-            }}
-            tiltEnabled={tiltEnabled}
+            onOpen={onOpenBook}
           />
         ) : (
           /* ========================================================
-              STATE 2: BOOK OPEN (Layered Fanned 3D Album Stack)
+              STATE 3: BOOK OPEN (Layered Fanned 3D Album Stack)
           ======================================================== */
           <>
             {/* STEPPED CAST SHADOW LAYER ON BACKGROUND (Floor Depth matching reference) */}

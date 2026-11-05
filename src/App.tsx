@@ -43,6 +43,7 @@ export default function App() {
   const [isTurning, setIsTurning] = useState(false)
   const [turnDirection, setTurnDirection] = useState<'next' | 'prev' | null>(null)
   const [targetIndex, setTargetIndex] = useState<number | null>(null)
+  const [coverAnimation, setCoverAnimation] = useState<'open' | 'close' | null>(null)
 
   // Settings: Active by default without configuration clutter
   const [soundEnabled, setSoundEnabled] = useState(true)
@@ -51,7 +52,7 @@ export default function App() {
   // Turn orchestration
   const startTurn = useCallback(
     (direction: 'next' | 'prev') => {
-      if (isTurning || isClosed) return
+      if (isTurning || isClosed || coverAnimation) return
 
       if (direction === 'next' && currentIndex < pages.length - 1) {
         sound.playPaperTurn(true)
@@ -65,13 +66,12 @@ export default function App() {
           setTurnDirection('prev')
           setTargetIndex(currentIndex - 1)
         } else {
-          // If already on page 1 and turn prev is pressed, close the book!
-          sound.playPaperTurn(false)
-          setIsClosed(true)
+          // If already on page 1 and turn prev is pressed, smoothly close the book!
+          handleCloseBook()
         }
       }
     },
-    [currentIndex, pages.length, isTurning, isClosed]
+    [currentIndex, pages.length, isTurning, isClosed, coverAnimation]
   )
 
   const handleTurnComplete = useCallback(() => {
@@ -86,7 +86,7 @@ export default function App() {
   // Direct page navigation
   const handlePageSelect = useCallback(
     (index: number) => {
-      if (index === currentIndex || isTurning || isClosed) return
+      if (index === currentIndex || isTurning || isClosed || coverAnimation) return
 
       if (index === currentIndex + 1) {
         startTurn('next')
@@ -97,17 +97,52 @@ export default function App() {
         setCurrentIndex(index)
       }
     },
-    [currentIndex, isTurning, isClosed, startTurn]
+    [currentIndex, isTurning, isClosed, coverAnimation, startTurn]
   )
 
-  // Toggle book open/closed
-  const handleToggleBook = (closed?: boolean) => {
-    const nextState = closed !== undefined ? closed : !isClosed
-    setIsClosed(nextState)
-    if (nextState) {
-      setCurrentIndex(0)
+  // Open book animation
+  const handleOpenBook = useCallback(() => {
+    if (coverAnimation || !isClosed || isTurning) return
+    sound.playPaperTurn(true)
+    setCoverAnimation('open')
+  }, [coverAnimation, isClosed, isTurning])
+
+  const handleOpenComplete = useCallback(() => {
+    setCoverAnimation(null)
+    setIsClosed(false)
+    setCurrentIndex(0)
+  }, [])
+
+  // Close book animation
+  const handleCloseBook = useCallback(() => {
+    if (coverAnimation || isClosed || isTurning) return
+    sound.playPaperTurn(false)
+    setCurrentIndex(0)
+    setCoverAnimation('close')
+  }, [coverAnimation, isClosed, isTurning])
+
+  const handleCloseComplete = useCallback(() => {
+    setCoverAnimation(null)
+    setIsClosed(true)
+  }, [])
+
+  const handleCoverAnimationComplete = useCallback(() => {
+    if (coverAnimation === 'open') {
+      handleOpenComplete()
+    } else if (coverAnimation === 'close') {
+      handleCloseComplete()
     }
-  }
+  }, [coverAnimation, handleOpenComplete, handleCloseComplete])
+
+  // Toggle book open/closed
+  const handleToggleBook = useCallback((closed?: boolean) => {
+    const nextState = closed !== undefined ? closed : !isClosed
+    if (nextState) {
+      handleCloseBook()
+    } else {
+      handleOpenBook()
+    }
+  }, [isClosed, handleCloseBook, handleOpenBook])
 
   // Toggle audio
   const handleToggleSound = () => {
@@ -125,32 +160,34 @@ export default function App() {
       if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D' || e.key === ' ') {
         e.preventDefault()
         if (isClosed) {
-          sound.playPaperTurn(true)
-          setIsClosed(false)
+          handleOpenBook()
         } else {
           startTurn('next')
         }
       } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
         e.preventDefault()
         if (!isClosed) {
-          startTurn('prev')
+          if (currentIndex === 0) {
+            handleCloseBook()
+          } else {
+            startTurn('prev')
+          }
         }
       } else if (e.key === 'c' || e.key === 'C') {
         e.preventDefault()
-        sound.playPaperTurn(!isClosed)
         handleToggleBook()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [startTurn, isClosed])
+  }, [startTurn, isClosed, currentIndex, handleOpenBook, handleCloseBook, handleToggleBook])
 
   return (
     <div className="relative w-screen h-screen overflow-hidden flex flex-col bg-[#344260] text-white">
       {/* TOP HEADER: Clean heading on top-left, minimal controls on right */}
       <JournalHeader
-        isClosed={isClosed}
+        isClosed={isClosed && coverAnimation !== 'open'}
         onToggleBook={handleToggleBook}
         soundEnabled={soundEnabled}
         onToggleSound={handleToggleSound}
@@ -171,6 +208,9 @@ export default function App() {
           onStartTurn={startTurn}
           tiltEnabled={tiltEnabled}
           isClosed={isClosed}
+          coverAnimation={coverAnimation}
+          onOpenBook={handleOpenBook}
+          onCoverAnimationComplete={handleCoverAnimationComplete}
           onToggleBook={handleToggleBook}
         />
       </main>

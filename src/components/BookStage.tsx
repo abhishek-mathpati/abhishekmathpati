@@ -231,7 +231,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                   <div className="absolute inset-y-0 right-0 w-8 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent to-black/10 rounded-l-[20px]" />
                 </div>
 
-                {/* Left Floating Chevron Button with Unified Hover State */}
+                {/* Left Floating Chevron Button in Outside Blank Space with Unified Hover State */}
                 <div
                   onClick={() => {
                     if (currentIndex > 0) {
@@ -242,20 +242,20 @@ export const BookStage: React.FC<BookStageProps> = ({
                     }
                   }}
                   title={currentIndex === 0 ? "Close Book" : "Previous Page"}
-                  className="absolute -left-6 sm:-left-9 z-50 flex items-center gap-2.5 cursor-pointer group/left-btn pointer-events-none"
+                  className="absolute -left-12 sm:-left-16 md:-left-20 lg:-left-24 z-50 flex items-center gap-2.5 cursor-pointer group/left-btn pointer-events-none"
                 >
                   <button
                     type="button"
                     aria-label={currentIndex === 0 ? "Close Book" : "Previous Page"}
-                    className="w-11 h-11 rounded-full bg-black/40 group-hover/left-btn:bg-black/75 peer-hover/left-flank:bg-black/75 text-white/80 group-hover/left-btn:text-white peer-hover/left-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/left-btn:scale-110 peer-hover/left-flank:scale-110 active:scale-95 shadow-lg pointer-events-none"
+                    className="w-12 h-12 rounded-full bg-black/40 group-hover/left-btn:bg-black/80 peer-hover/left-flank:bg-black/80 text-white/80 group-hover/left-btn:text-white peer-hover/left-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/left-btn:scale-110 peer-hover/left-flank:scale-110 active:scale-95 shadow-xl pointer-events-none"
                   >
                     {currentIndex === 0 ? (
-                      <Book className="w-4 h-4 stroke-[2.2]" />
+                      <Book className="w-5 h-5 stroke-[2.2]" />
                     ) : (
-                      <ChevronLeft className="w-6 h-6 stroke-[2.2]" />
+                      <ChevronLeft className="w-7 h-7 stroke-[2.2]" />
                     )}
                   </button>
-                  <span className="opacity-0 group-hover/left-btn:opacity-100 peer-hover/left-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/70 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap pointer-events-none hidden lg:inline-block">
+                  <span className="opacity-0 group-hover/left-btn:opacity-100 peer-hover/left-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/75 px-3 py-1.5 rounded-full border border-white/15 whitespace-nowrap pointer-events-none hidden lg:inline-block">
                     {currentIndex === 0 ? '‹ Close' : '‹ Prev'}
                   </span>
                 </div>
@@ -276,20 +276,20 @@ export const BookStage: React.FC<BookStageProps> = ({
                       <div className="absolute inset-y-0 left-0 w-8 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-l from-transparent to-black/10 rounded-r-[20px]" />
                     </div>
 
-                    {/* Right Floating Chevron Button with Unified Hover State */}
+                    {/* Right Floating Chevron Button in Outside Blank Space with Unified Hover State */}
                     <div
                       onClick={() => onStartTurn('next')}
                       title="Next Page"
-                      className="absolute -right-6 sm:-right-9 z-50 flex items-center gap-2.5 cursor-pointer group/right-btn flex-row-reverse pointer-events-none"
+                      className="absolute -right-12 sm:-right-16 md:-right-20 lg:-right-24 z-50 flex items-center gap-2.5 cursor-pointer group/right-btn flex-row-reverse pointer-events-none"
                     >
                       <button
                         type="button"
                         aria-label="Next Page"
-                        className="w-11 h-11 rounded-full bg-black/40 group-hover/right-btn:bg-black/75 peer-hover/right-flank:bg-black/75 text-white/80 group-hover/right-btn:text-white peer-hover/right-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/right-btn:scale-110 peer-hover/right-flank:scale-110 active:scale-95 shadow-lg pointer-events-none"
+                        className="w-12 h-12 rounded-full bg-black/40 group-hover/right-btn:bg-black/80 peer-hover/right-flank:bg-black/80 text-white/80 group-hover/right-btn:text-white peer-hover/right-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/right-btn:scale-110 peer-hover/right-flank:scale-110 active:scale-95 shadow-xl pointer-events-none"
                       >
-                        <ChevronRight className="w-6 h-6 stroke-[2.2]" />
+                        <ChevronRight className="w-7 h-7 stroke-[2.2]" />
                       </button>
-                      <span className="opacity-0 group-hover/right-btn:opacity-100 peer-hover/right-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/70 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap pointer-events-none hidden lg:inline-block">
+                      <span className="opacity-0 group-hover/right-btn:opacity-100 peer-hover/right-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/75 px-3 py-1.5 rounded-full border border-white/15 whitespace-nowrap pointer-events-none hidden lg:inline-block">
                         Next ›
                       </span>
                     </div>

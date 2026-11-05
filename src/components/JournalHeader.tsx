@@ -25,7 +25,6 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
       <div className="flex items-center">
         <h1 className="text-3xl sm:text-4xl font-normal tracking-wide text-white font-apricots flex items-center gap-2">
           <span>Abhishek Mathpati</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block mb-1"></span>
         </h1>
       </div>
 

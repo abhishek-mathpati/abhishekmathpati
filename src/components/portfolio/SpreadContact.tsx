@@ -12,7 +12,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
     <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
       {/* High-Resolution Design from Designs/Page8.png */}
       <img
-        src="/designs/Page8.png?v=3"
+        src="/designs/Page8.png?v=original"
         alt="Language Skills & Contact Spread"
         loading="eager"
         decoding="async"

@@ -9,7 +9,7 @@ export const SpreadEducationCanvas: React.FC<SpreadProps> = ({ className = '' })
     <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
       {/* High-Resolution Design from Designs/Page1.png */}
       <img
-        src="/designs/Page1.png?v=original"
+        src="/designs/Page1.png?v=20261105"
         alt="Education Spread"
         loading="eager"
         decoding="async"

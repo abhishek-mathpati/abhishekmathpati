@@ -9,7 +9,7 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
     <div className={`relative w-full h-full select-none overflow-hidden bg-white ${className}`}>
       {/* High-Resolution Design from Designs/Page4.png */}
       <img
-        src="/designs/Page4.png?v=original"
+        src="/designs/Page4.png?v=20261105"
         alt="Projects Spread"
         loading="eager"
         decoding="async"

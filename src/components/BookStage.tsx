@@ -201,29 +201,17 @@ export const BookStage: React.FC<BookStageProps> = ({
               ) : (
                 <ActivePageSpread
                   page={currentPage}
-                  onClickLeft={() => {
-                    if (currentIndex > 0 && !isTurning) {
-                      onStartTurn('prev')
-                    } else if (currentIndex === 0 && !isTurning) {
-                      // Flipping backward from page 1 closes the book!
-                      sound.playPaperTurn(false)
-                      onToggleBook(true)
-                    }
-                  }}
-                  onClickRight={() => {
-                    if (currentIndex < pages.length - 1 && !isTurning) {
-                      onStartTurn('next')
-                    }
-                  }}
                 />
               )}
             </div>
 
-            {/* ELEGANT MINIMAL FLOATING CHEVRON BUTTONS */}
+            {/* ========================================================
+                UNIFIED FLANK & 5% EDGE TURN ZONES (Open Book)
+            ======================================================== */}
             {!isTurning && (
               <>
-                {/* Left Arrow (Prev Page or Close Book if on Page 1) */}
-                <button
+                {/* LEFT FLANK & 5% MARGIN TURN ZONE (Prev Page or Close) */}
+                <div
                   onClick={() => {
                     if (currentIndex > 0) {
                       onStartTurn('prev')
@@ -232,27 +220,80 @@ export const BookStage: React.FC<BookStageProps> = ({
                       onToggleBook(true)
                     }
                   }}
-                  aria-label={currentIndex === 0 ? "Close Book" : "Previous Page"}
-                  title={currentIndex === 0 ? "Close Book" : "Previous Page (Left Arrow)"}
-                  className="absolute -left-6 sm:-left-9 z-50 w-11 h-11 rounded-full bg-black/40 hover:bg-black/65 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-105 active:scale-95 shadow-lg"
+                  title={currentIndex === 0 ? "Close Book" : "Previous Page (Click Edge or Side Area)"}
+                  style={{
+                    right: '95%',
+                    left: 'max(-100vw, -1200px)',
+                  }}
+                  className="absolute inset-y-0 z-45 cursor-pointer peer/left-flank flex items-center justify-end"
                 >
-                  {currentIndex === 0 ? (
-                    <Book className="w-4 h-4 stroke-[2.2]" />
-                  ) : (
-                    <ChevronLeft className="w-6 h-6 stroke-[2.2]" />
-                  )}
-                </button>
+                  {/* Subtle edge highlight on paper edge */}
+                  <div className="absolute inset-y-0 right-0 w-8 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent to-black/10 rounded-l-[20px]" />
+                </div>
 
-                {/* Right Arrow (Next Page) */}
-                {currentIndex < pages.length - 1 && (
+                {/* Left Floating Chevron Button with Unified Hover State */}
+                <div
+                  onClick={() => {
+                    if (currentIndex > 0) {
+                      onStartTurn('prev')
+                    } else {
+                      sound.playPaperTurn(false)
+                      onToggleBook(true)
+                    }
+                  }}
+                  title={currentIndex === 0 ? "Close Book" : "Previous Page"}
+                  className="absolute -left-6 sm:-left-9 z-50 flex items-center gap-2.5 cursor-pointer group/left-btn pointer-events-none"
+                >
                   <button
-                    onClick={() => onStartTurn('next')}
-                    aria-label="Next Page"
-                    title="Next Page (Right Arrow)"
-                    className="absolute -right-6 sm:-right-9 z-50 w-11 h-11 rounded-full bg-black/40 hover:bg-black/65 text-white/80 hover:text-white flex items-center justify-center transition-all duration-200 border border-white/20 hover:scale-105 active:scale-95 shadow-lg"
+                    type="button"
+                    aria-label={currentIndex === 0 ? "Close Book" : "Previous Page"}
+                    className="w-11 h-11 rounded-full bg-black/40 group-hover/left-btn:bg-black/75 peer-hover/left-flank:bg-black/75 text-white/80 group-hover/left-btn:text-white peer-hover/left-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/left-btn:scale-110 peer-hover/left-flank:scale-110 active:scale-95 shadow-lg pointer-events-none"
                   >
-                    <ChevronRight className="w-6 h-6 stroke-[2.2]" />
+                    {currentIndex === 0 ? (
+                      <Book className="w-4 h-4 stroke-[2.2]" />
+                    ) : (
+                      <ChevronLeft className="w-6 h-6 stroke-[2.2]" />
+                    )}
                   </button>
+                  <span className="opacity-0 group-hover/left-btn:opacity-100 peer-hover/left-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/70 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap pointer-events-none hidden lg:inline-block">
+                    {currentIndex === 0 ? '‹ Close' : '‹ Prev'}
+                  </span>
+                </div>
+
+                {/* RIGHT FLANK & 5% MARGIN TURN ZONE (Next Page) */}
+                {currentIndex < pages.length - 1 && (
+                  <>
+                    <div
+                      onClick={() => onStartTurn('next')}
+                      title="Next Page (Click Edge or Side Area)"
+                      style={{
+                        left: '95%',
+                        right: 'max(-100vw, -1200px)',
+                      }}
+                      className="absolute inset-y-0 z-45 cursor-pointer peer/right-flank flex items-center justify-start"
+                    >
+                      {/* Subtle edge highlight on paper edge */}
+                      <div className="absolute inset-y-0 left-0 w-8 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-l from-transparent to-black/10 rounded-r-[20px]" />
+                    </div>
+
+                    {/* Right Floating Chevron Button with Unified Hover State */}
+                    <div
+                      onClick={() => onStartTurn('next')}
+                      title="Next Page"
+                      className="absolute -right-6 sm:-right-9 z-50 flex items-center gap-2.5 cursor-pointer group/right-btn flex-row-reverse pointer-events-none"
+                    >
+                      <button
+                        type="button"
+                        aria-label="Next Page"
+                        className="w-11 h-11 rounded-full bg-black/40 group-hover/right-btn:bg-black/75 peer-hover/right-flank:bg-black/75 text-white/80 group-hover/right-btn:text-white peer-hover/right-flank:text-white flex items-center justify-center transition-all duration-200 border border-white/20 group-hover/right-btn:scale-110 peer-hover/right-flank:scale-110 active:scale-95 shadow-lg pointer-events-none"
+                      >
+                        <ChevronRight className="w-6 h-6 stroke-[2.2]" />
+                      </button>
+                      <span className="opacity-0 group-hover/right-btn:opacity-100 peer-hover/right-flank:opacity-100 transition-opacity duration-200 text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/70 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap pointer-events-none hidden lg:inline-block">
+                        Next ›
+                      </span>
+                    </div>
+                  </>
                 )}
               </>
             )}

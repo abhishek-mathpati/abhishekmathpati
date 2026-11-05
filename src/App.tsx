@@ -3,6 +3,7 @@ import { JournalPage } from './types/journal'
 import { samplePages } from './data/samplePages'
 import { JournalHeader } from './components/JournalHeader'
 import { BookStage } from './components/BookStage'
+import { AntiDevTools } from './components/security/AntiDevTools'
 import { sound } from './utils/sound'
 
 export default function App() {
@@ -185,6 +186,9 @@ export default function App() {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden flex flex-col bg-[#344260] text-white">
+      {/* SECURITY PROTOCOL: Anti-DevTools diagnostic shield */}
+      <AntiDevTools />
+
       {/* TOP HEADER: Clean heading on top-left, minimal controls on right */}
       <JournalHeader
         isClosed={isClosed && coverAnimation !== 'open'}

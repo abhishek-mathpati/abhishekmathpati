@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
         }
 
         // 5. Send with Resend
-        const recipientEmail = process.env.CONTACT_EMAIL || 'saisujithmendru@gmail.com';
+        const recipientEmail = process.env.CONTACT_EMAIL || 'abhishekmathpati2027@gmail.com';
         const { data, error } = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>', // Replace with your verified domain in production
             to: recipientEmail,

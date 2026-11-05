@@ -90,7 +90,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     // 5. Send with Resend REST API (Edge compatible)
     const apiKey = env.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : '');
-    const recipientEmail = env.CONTACT_EMAIL || (typeof process !== 'undefined' ? process.env?.CONTACT_EMAIL : '') || 'saisujithmendru@gmail.com';
+    const recipientEmail = env.CONTACT_EMAIL || (typeof process !== 'undefined' ? process.env?.CONTACT_EMAIL : '') || 'abhishekmathpati2027@gmail.com';
 
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'RESEND_API_KEY not configured on server' }), {

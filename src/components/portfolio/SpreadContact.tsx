@@ -35,18 +35,19 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         aria-label="GitHub Profile"
       />
 
-      {/* Interactive Link: Email (mailto) */}
-      <a
-        href="mailto:abhishekmathpati2027@gmail.com"
-        title="Send Email (abhishekmathpati2027@gmail.com)"
-        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
+      {/* Interactive Button: Contact / Send Email Modal (Resend) */}
+      <button
+        type="button"
+        onClick={() => setIsModalOpen(true)}
+        title="Send a Message (Resend Email)"
+        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95 bg-transparent"
         style={{
           left: '67.240%',
           top: '49.120%',
           width: '3.5%',
           aspectRatio: '1 / 1'
         }}
-        aria-label="Send Email"
+        aria-label="Send Direct Message"
       />
 
       {/* Interactive Link: LinkedIn Profile */}

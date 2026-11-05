@@ -31,7 +31,7 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
             }
 
             const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY || '';
-            const recipientEmail = env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'saisujithmendru@gmail.com';
+            const recipientEmail = env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'abhishekmathpati2027@gmail.com';
 
             if (!apiKey || apiKey.startsWith('re_123456789')) {
               // Simulated success in dev if using placeholder key

@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Send, Mail, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
@@ -117,11 +118,20 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
 }
 
 export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-    if (!isOpen) return null;
+    useEffect(() => {
+        if (!isOpen) return;
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') onClose();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isOpen, onClose]);
 
-    return (
+    if (!isOpen || typeof document === 'undefined') return null;
+
+    return createPortal(
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs select-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm select-auto"
             onClick={onClose}
         >
             <div
@@ -131,21 +141,25 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-zinc-800 pb-3 mb-5">
                     <div className="flex items-center gap-2">
-                        <Mail className="w-5 h-5 text-blue-500" />
-                        <h2 className="text-base font-bold font-sans">Send Direct Transmission</h2>
+                        <Mail className="w-5 h-5 text-blue-400" />
+                        <div>
+                            <h2 className="text-base font-bold font-sans">Send a Message</h2>
+                            <p className="text-[11px] text-zinc-400 font-mono">Delivers to abhishekmathpati2027@gmail.com</p>
+                        </div>
                     </div>
                     <button
                         onClick={onClose}
-                        className="w-7 h-7 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center transition-colors"
+                        className="w-7 h-7 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                         aria-label="Close"
                     >
                         <X className="w-4 h-4" />
                     </button>
                 </div>
 
-                <ContactForm />
+                <ContactForm onSuccess={() => {}} />
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 

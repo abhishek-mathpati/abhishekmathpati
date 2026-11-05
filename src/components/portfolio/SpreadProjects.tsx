@@ -1,4 +1,6 @@
 import React from 'react'
+import { ExternalLink } from 'lucide-react'
+import { GithubIcon } from './PortfolioIcons'
 
 interface SpreadProps {
   className?: string
@@ -22,20 +24,24 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open SecureShare Repository (GitHub)"
-        className="group absolute z-10 cursor-pointer rounded-[24px] sm:rounded-[28px] transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden border border-black/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
         style={{
-          left: '2.71%',
-          top: '32.96%',
-          width: '19.79%',
-          height: '35.56%'
+          left: '2.81%',
+          top: '33.06%',
+          width: '19.74%',
+          height: '35.09%'
         }}
         aria-label="SecureShare GitHub Repository"
       >
-        <img
-          src="/designs/projects/card_secureshare.png"
-          alt="SecureShare"
-          className="w-full h-full object-contain rounded-[24px] sm:rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] pointer-events-none select-none"
-        />
+        {/* Confined Card Blur Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Floating GitHub Badge */}
+        <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900/90 text-white border border-white/20 shadow-xl opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none select-none">
+          <GithubIcon className="w-4 h-4" />
+          <span className="text-xs font-semibold font-sans tracking-wide">GitHub</span>
+          <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+        </div>
       </a>
 
       {/* 2. College Website GitHub Repository */}
@@ -44,20 +50,24 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open College Website Repository (GitHub)"
-        className="group absolute z-10 cursor-pointer rounded-[24px] sm:rounded-[26px] transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer rounded-[18px] sm:rounded-[22px] lg:rounded-[26px] overflow-hidden border border-black/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
         style={{
-          left: '25.89%',
-          top: '54.63%',
-          width: '17.08%',
-          height: '30.46%'
+          left: '26.09%',
+          top: '55.28%',
+          width: '16.61%',
+          height: '29.63%'
         }}
         aria-label="College Website GitHub Repository"
       >
-        <img
-          src="/designs/projects/card_college_website.png"
-          alt="College Website"
-          className="w-full h-full object-contain rounded-[24px] sm:rounded-[26px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] pointer-events-none select-none"
-        />
+        {/* Confined Card Blur Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Floating GitHub Badge */}
+        <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900/90 text-white border border-white/20 shadow-xl opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none select-none">
+          <GithubIcon className="w-4 h-4" />
+          <span className="text-xs font-semibold font-sans tracking-wide">GitHub</span>
+          <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+        </div>
       </a>
 
       {/* 3. SMIA (Social Media Investigative Assistant) GitHub Repository */}
@@ -66,20 +76,24 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open Social Media Investigative Assistant Repository (GitHub)"
-        className="group absolute z-10 cursor-pointer rounded-[24px] sm:rounded-[28px] transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden border border-black/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
         style={{
-          left: '53.23%',
-          top: '8.98%',
-          width: '19.53%',
-          height: '34.63%'
+          left: '53.28%',
+          top: '9.07%',
+          width: '19.06%',
+          height: '34.07%'
         }}
         aria-label="Social Media Investigative Assistant GitHub Repository"
       >
-        <img
-          src="/designs/projects/card_smia.png"
-          alt="Social Media Investigative Assistant"
-          className="w-full h-full object-contain rounded-[24px] sm:rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] pointer-events-none select-none"
-        />
+        {/* Confined Card Blur Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Floating GitHub Badge */}
+        <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900/90 text-white border border-white/20 shadow-xl opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none select-none">
+          <GithubIcon className="w-4 h-4" />
+          <span className="text-xs font-semibold font-sans tracking-wide">GitHub</span>
+          <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+        </div>
       </a>
 
       {/* 4. QPAT (Question Paper Automation Tool) GitHub Repository */}
@@ -88,20 +102,24 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open Question Paper Automation Tool Repository (GitHub)"
-        className="group absolute z-10 cursor-pointer rounded-[24px] sm:rounded-[28px] transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden border border-black/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
         style={{
           left: '78.13%',
-          top: '29.44%',
-          width: '18.54%',
+          top: '29.63%',
+          width: '18.59%',
           height: '33.06%'
         }}
         aria-label="Question Paper Automation Tool GitHub Repository"
       >
-        <img
-          src="/designs/projects/card_qpat.png"
-          alt="Question Paper Automation Tool"
-          className="w-full h-full object-contain rounded-[24px] sm:rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] pointer-events-none select-none"
-        />
+        {/* Confined Card Blur Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Floating GitHub Badge */}
+        <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900/90 text-white border border-white/20 shadow-xl opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none select-none">
+          <GithubIcon className="w-4 h-4" />
+          <span className="text-xs font-semibold font-sans tracking-wide">GitHub</span>
+          <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+        </div>
       </a>
 
       {/* 5. Park Hub GitHub Repository */}
@@ -110,20 +128,24 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open Park Hub Repository (GitHub)"
-        className="group absolute z-10 cursor-pointer rounded-[24px] sm:rounded-[28px] transition-transform duration-300 ease-out hover:scale-[1.04] active:scale-[0.98]"
+        className="group absolute z-10 cursor-pointer rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden border border-black/15 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
         style={{
-          left: '58.59%',
-          top: '63.89%',
-          width: '19.01%',
-          height: '33.24%'
+          left: '58.70%',
+          top: '64.07%',
+          width: '18.75%',
+          height: '33.52%'
         }}
         aria-label="Park Hub GitHub Repository"
       >
-        <img
-          src="/designs/projects/card_park_hub.png"
-          alt="Park Hub"
-          className="w-full h-full object-contain rounded-[24px] sm:rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_12px_24px_rgba(0,0,0,0.22)] pointer-events-none select-none"
-        />
+        {/* Confined Card Blur Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Floating GitHub Badge */}
+        <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900/90 text-white border border-white/20 shadow-xl opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out pointer-events-none select-none">
+          <GithubIcon className="w-4 h-4" />
+          <span className="text-xs font-semibold font-sans tracking-wide">GitHub</span>
+          <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+        </div>
       </a>
     </div>
   )

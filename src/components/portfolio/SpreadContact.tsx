@@ -25,7 +25,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open GitHub Profile"
-        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-115 active:scale-95"
         style={{
           left: '63.333%',
           top: '49.074%',
@@ -35,13 +35,13 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         aria-label="GitHub Profile"
       >
         {/* Soft Ambient Halo Glow (like turning arrows) */}
-        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Hover Icon with Filled White Octocat & Subtle Lift Shadow */}
+        {/* Hover Icon with Filled White Octocat - straight pop-up */}
         <img
           src="/designs/contact/icon_hover_gh.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
         />
       </a>
 
@@ -50,7 +50,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         type="button"
         onClick={() => setIsModalOpen(true)}
         title="Send a Message"
-        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95 bg-transparent border-none p-0 outline-none"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-115 active:scale-95 bg-transparent border-none p-0 outline-none"
         style={{
           left: '67.240%',
           top: '49.120%',
@@ -60,13 +60,13 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         aria-label="Send Direct Message"
       >
         {/* Soft Ambient Halo Glow */}
-        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Hover Icon with Filled White Envelope & Subtle Lift Shadow */}
+        {/* Hover Icon with Filled White Envelope - straight pop-up */}
         <img
           src="/designs/contact/icon_hover_em.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
         />
       </button>
 
@@ -76,7 +76,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open LinkedIn Profile"
-        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-115 active:scale-95"
         style={{
           left: '71.146%',
           top: '49.120%',
@@ -86,13 +86,13 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         aria-label="LinkedIn Profile"
       >
         {/* Soft Ambient Halo Glow with subtle blue tint */}
-        <div className="absolute -inset-2.5 rounded-full bg-blue-400/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-2 rounded-full bg-blue-400/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Hover Icon with Filled White 'in' & Subtle Lift Shadow */}
+        {/* Hover Icon with Filled White 'in' - straight pop-up */}
         <img
           src="/designs/contact/icon_hover_li.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
         />
       </a>
 
@@ -103,7 +103,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         rel="noopener noreferrer"
         download="Abhishek_Mathpati_CV.pdf"
         title="Download CV (PDF)"
-        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
           left: '67.240%',
           top: '55.185%',
@@ -113,13 +113,13 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         aria-label="Download CV"
       >
         {/* Soft Ambient Halo Glow around the pill */}
-        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-2 rounded-full bg-white/45 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Hover Icon with Filled White Cloud, Arrow & 'CV' & Subtle Lift Shadow */}
+        {/* Hover Icon with Filled White Cloud, Arrow & 'CV' - straight pop-up */}
         <img
           src="/designs/contact/icon_hover_cv.png"
           alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)] drop-shadow-[0_0_3px_rgba(0,0,0,0.35)] pointer-events-none select-none"
         />
       </a>
 

@@ -8,11 +8,5 @@
 /assets/*
   Cache-Control: public, max-age=18000
 
-/education/*
-  Cache-Control: public, max-age=18000
-
-/experience/*
-  Cache-Control: public, max-age=18000
-
-/publications/*
+/designs/*
   Cache-Control: public, max-age=18000

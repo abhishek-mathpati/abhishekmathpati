@@ -17,57 +17,58 @@ interface ProjectCardData {
   borderRadius: string
 }
 
-// Exact mathematical 1-pixel coordinate boundaries and corner radii measured from Page4.png (1920x1080)
+// Exact outer perimeter bounds calibrated to flush directly against the background (1920x1080)
+// This fully encapsulates the subtle artwork bevel so no secondary light halo/line is visible outside.
 const PROJECT_CARDS: ProjectCardData[] = [
   {
     id: 'secureshare',
     title: 'SecureShare',
     href: 'https://github.com/abhishek-mathpati/SecureShare',
-    left: '2.8125%',
-    top: '33.0556%',
-    width: '19.7396%',
-    height: '35.0926%',
-    borderRadius: '18.73%' // 71px radius on 379x379px square
+    left: '2.8125%',    // x: 54
+    top: '33.0556%',    // y: 357
+    width: '19.7917%',  // 380px (x: 54..433)
+    height: '35.1852%', // 380px (y: 357..736)
+    borderRadius: '18.68%'
   },
   {
     id: 'college-website',
     title: 'College Website',
     href: 'https://github.com/abhishek-mathpati/College-Website',
-    left: '26.0938%',
-    top: '55.1852%',
-    width: '16.6667%',
-    height: '29.8148%',
-    borderRadius: '12.81%' // 41px radius on 320x322px rectangle
+    left: '26.0938%',   // x: 501
+    top: '55.1852%',    // y: 596
+    width: '16.8229%',  // 323px (x: 501..823)
+    height: '30.0926%', // 325px (y: 596..920)
+    borderRadius: '13.31%'
   },
   {
     id: 'smia',
     title: 'Social Media Investigative Assistant (SMIA)',
     href: 'https://github.com/abhishek-mathpati/social-media-investigative-assistant-for-law-enforcement',
-    left: '53.1250%',
-    top: '8.8889%',
-    width: '19.3229%',
-    height: '34.4444%',
-    borderRadius: '12.13%' // 45px radius on 371x372px rectangle
+    left: '53.1250%',   // x: 1020
+    top: '8.8889%',     // y: 96
+    width: '19.5313%',  // 375px (x: 1020..1394)
+    height: '34.8148%', // 376px (y: 96..471)
+    borderRadius: '12.80%'
   },
   {
     id: 'qpat',
     title: 'Question Paper Automation Tool (QPAT)',
     href: 'https://github.com/abhishek-mathpati/Question-Paper-Automation-Tool',
-    left: '78.1250%',
-    top: '29.5370%',
-    width: '18.6458%',
-    height: '33.2407%',
-    borderRadius: '12.85%' // 46px radius on 358x359px rectangle
+    left: '78.1250%',   // x: 1500
+    top: '29.5370%',    // y: 319
+    width: '18.7500%',  // 360px (x: 1500..1859)
+    height: '33.4259%', // 361px (y: 319..679)
+    borderRadius: '13.33%'
   },
   {
     id: 'park-hub',
     title: 'Park Hub: Parking Management System',
     href: 'https://github.com/abhishek-mathpati/Park-Hub',
-    left: '58.6458%',
-    top: '63.8889%',
-    width: '18.9583%',
-    height: '33.7963%',
-    borderRadius: '10.16%' // 37px radius on 364x365px rectangle
+    left: '58.6458%',   // x: 1126
+    top: '63.8889%',    // y: 690
+    width: '18.9583%',  // 364px (x: 1126..1489)
+    height: '33.8889%', // 366px (y: 690..1055)
+    borderRadius: '10.71%'
   }
 ]
 
@@ -83,7 +84,7 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         className="w-full h-full object-contain pointer-events-none select-none"
       />
 
-      {/* Precisely Calibrated Project Cards with Card-Specific Radii & Bounds */}
+      {/* Precisely Calibrated Project Cards: Clean, Thin, Dark Border with Zero Outer Light Lines */}
       {PROJECT_CARDS.map((project) => (
         <a
           key={project.id}
@@ -92,7 +93,7 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
           rel="noopener noreferrer"
           title={`Open ${project.title} Repository (GitHub)`}
           aria-label={`${project.title} GitHub Repository`}
-          className="group absolute z-10 cursor-pointer overflow-hidden border-[1.5px] border-black/45 hover:border-black/70 shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
+          className="group absolute z-10 cursor-pointer overflow-hidden border-[1.5px] border-black/50 hover:border-black/80 transition-colors duration-300 ease-out flex items-center justify-center active:scale-[0.98]"
           style={{
             left: project.left,
             top: project.top,

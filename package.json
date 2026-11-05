@@ -17,7 +17,6 @@
   "description": "",
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "canvas-confetti": "^1.9.4",
     "framer-motion": "^14.9.0",
     "lucide-react": "^1.66.0",
     "react": "^19.3.1",
@@ -25,7 +24,6 @@
     "resend": "^6.37.0"
   },
   "devDependencies": {
-    "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.7.0",

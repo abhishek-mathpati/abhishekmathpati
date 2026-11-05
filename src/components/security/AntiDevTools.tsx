@@ -139,3 +139,4 @@ export function AntiDevTools({ immediateRedirect = false }: AntiDevToolsProps) {
     </div>
   );
 }
+

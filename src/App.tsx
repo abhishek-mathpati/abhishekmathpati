@@ -7,38 +7,20 @@ import { AntiDevTools } from './components/security/AntiDevTools'
 import { sound } from './utils/sound'
 
 export default function App() {
-  // State with URL sync
+  // State
   const [pages] = useState<JournalPage[]>(samplePages)
-  const [currentIndex, setCurrentIndex] = useState<number>(() => {
-    try {
-      const p = new URLSearchParams(window.location.search).get('page')
-      if (p) {
-        const val = parseInt(p, 10) - 1
-        if (val >= 0 && val < samplePages.length) return val
-      }
-    } catch {}
-    return 0
-  })
-  const [isClosed, setIsClosed] = useState<boolean>(() => {
-    try {
-      return new URLSearchParams(window.location.search).get('closed') === 'true'
-    } catch {}
-    return false
-  })
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [isClosed, setIsClosed] = useState<boolean>(true)
 
-  // Sync current page number and closed state with URL
+  // Ensure URL remains completely clean without query parameters
   useEffect(() => {
     try {
-      const url = new URL(window.location.href)
-      url.searchParams.set('page', String(currentIndex + 1))
-      if (isClosed) {
-        url.searchParams.set('closed', 'true')
-      } else {
-        url.searchParams.delete('closed')
+      if (window.location.search) {
+        const cleanUrl = window.location.pathname + window.location.hash
+        window.history.replaceState({}, '', cleanUrl || '/')
       }
-      window.history.replaceState({}, '', url.toString())
     } catch {}
-  }, [currentIndex, isClosed])
+  }, [])
 
   // 3D Animation states
   const [isTurning, setIsTurning] = useState(false)

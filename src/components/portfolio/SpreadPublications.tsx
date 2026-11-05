@@ -23,20 +23,19 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System with Privacy-Preserving Access Control (ICSSEECC 2026)"
         aria-label="Read Paper on IEEE Xplore: An Intelligent Decentralized Secure File Sharing System"
-        className="group absolute z-10 cursor-pointer select-none"
+        className="group absolute z-10 cursor-pointer select-none -translate-x-1/2 -translate-y-1/2 rotate-[-0.4deg] transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
           left: '37.370%',
           top: '85.880%',
           width: '22.396%',
-          height: '12.593%',
-          transform: 'translate(-50%, -50%) rotate(-0.4deg)'
+          height: '12.593%'
         }}
       >
-        {/* Popping Text: Pops up a little bit straight on hover */}
+        {/* Exact Original Tape & Text: Straight Pop-Up Only matching Contacts page */}
         <img
-          src="/designs/publications/pop_text_green.png"
-          alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110 active:scale-95 drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          src="/designs/publications/tape_pop_green.png"
+          alt="Read The Paper"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_6px_14px_rgba(0,0,0,0.22)] pointer-events-none select-none"
         />
       </a>
 
@@ -47,20 +46,19 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
         rel="noopener noreferrer"
         title="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics (ICCIC 2025)"
         aria-label="Read Paper on IJRDET: A Web-Based Automation Framework for Instagram Profile Forensics"
-        className="group absolute z-10 cursor-pointer select-none"
+        className="group absolute z-10 cursor-pointer select-none -translate-x-1/2 -translate-y-1/2 rotate-[-5.9deg] transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
           left: '62.526%',
           top: '46.574%',
           width: '22.188%',
-          height: '12.500%',
-          transform: 'translate(-50%, -50%) rotate(-5.9deg)'
+          height: '12.500%'
         }}
       >
-        {/* Popping Text: Pops up a little bit straight on hover */}
+        {/* Exact Original Tape & Text: Straight Pop-Up Only matching Contacts page */}
         <img
-          src="/designs/publications/pop_text_blue.png"
-          alt=""
-          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out group-hover:scale-110 active:scale-95 drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] pointer-events-none select-none"
+          src="/designs/publications/tape_pop_blue.png"
+          alt="Read The Paper"
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_6px_14px_rgba(0,0,0,0.22)] pointer-events-none select-none"
         />
       </a>
 
@@ -68,13 +66,12 @@ export const SpreadPublications: React.FC<SpreadProps> = ({ className = '' }) =>
       <div
         title="Status: Accepted to appear in IEEE Xplore (ISDDC - 2026)"
         aria-label="Accepted to appear in IEEE Xplore (ISDDC - 2026)"
-        className="absolute z-10 cursor-default select-none"
+        className="absolute z-10 cursor-default select-none -translate-x-1/2 -translate-y-1/2"
         style={{
           left: '61.6%',
           top: '85.8%',
           width: '10.5%',
-          height: '15.5%',
-          transform: 'translate(-50%, -50%)'
+          height: '15.5%'
         }}
       />
     </div>

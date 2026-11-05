@@ -290,34 +290,10 @@ export const PageRenderer: React.FC<PageRendererProps> = ({
 
   return (
     <div
-      className={`relative w-full h-full select-none overflow-hidden ${getTextureClass()} ${className}`}
+      className={`relative w-full h-full select-none overflow-hidden bg-[#fbf9f5] ${className}`}
     >
       {/* Paper fiber / grain background overlay */}
       <div className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
-
-      {/* Render All Photos */}
-      {page.photos.map(renderPhoto)}
-
-      {/* Render All Stickers */}
-      {page.stickers.map(renderSticker)}
-
-      {/* Render All Notes */}
-      {page.notes.map(renderNote)}
-
-      {/* Subtle corner page number */}
-      <div className="absolute bottom-3 right-4 text-[11px] font-editorial text-neutral-400 tracking-wider pointer-events-none">
-        {page.pageNumber}
-      </div>
-
-      {/* Subtle date/location tag at bottom left */}
-      {page.location && (
-        <div className="absolute bottom-3 left-4 flex items-center gap-1.5 text-[10px] text-neutral-500 font-sans tracking-wide pointer-events-none">
-          <MapPin className="w-2.5 h-2.5 opacity-60" />
-          <span>{page.location}</span>
-          <span className="opacity-40">•</span>
-          <span>{page.date}</span>
-        </div>
-      )}
     </div>
   )
 }

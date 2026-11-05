@@ -6,47 +6,9 @@ interface SpreadProps {
 
 export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
-      {/* High-Definition Master Design with Uniform Typography */}
-      <img
-        src="/designs/Page4.png?v=uniform"
-        alt="Projects Spread"
-        loading="eager"
-        fetchPriority="high"
-        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
-      />
-
-      {/* Interactive Link: SecureShare GitHub Repository */}
-      <a
-        href="https://github.com/abhishek-mathpati/SecureShare"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Open SecureShare Repository (GitHub)"
-        className="absolute z-10 cursor-pointer rounded-3xl transition-all duration-200 hover:outline hover:outline-2 hover:outline-lime-600/50 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-        style={{
-          left: '2.7%',
-          top: '33.0%',
-          width: '19.7%',
-          height: '35.6%'
-        }}
-        aria-label="SecureShare GitHub Repository"
-      />
-
-      {/* Interactive Link: QPAT GitHub Repository */}
-      <a
-        href="https://github.com/abhishek-mathpati/Question-Paper-Automation-Tool"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Open Question Paper Automation Tool Repository (GitHub)"
-        className="absolute z-10 cursor-pointer rounded-3xl transition-all duration-200 hover:outline hover:outline-2 hover:outline-orange-500/50 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-        style={{
-          left: '78.1%',
-          top: '29.5%',
-          width: '18.6%',
-          height: '33.0%'
-        }}
-        aria-label="Question Paper Automation Tool GitHub Repository"
-      />
+    <div className={`relative w-full h-full select-none overflow-hidden bg-[#fbf9f5] ${className}`}>
+      {/* Clean Empty Spread with subtle paper texture */}
+      <div className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
     </div>
   )
 }

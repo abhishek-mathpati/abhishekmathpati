@@ -6,13 +6,9 @@ interface SpreadProps {
 
 export const SpreadSkills: React.FC<SpreadProps> = ({ className = '' }) => {
   return (
-    <div className={`relative w-full h-full select-none overflow-hidden bg-white crisp-page ${className}`}>
-      <img
-        src="/designs/Page5.png"
-        alt="Skills Spread"
-        className="w-full h-full object-fill pointer-events-none select-none crisp-page"
-      />
+    <div className={`relative w-full h-full select-none overflow-hidden bg-[#fbf9f5] ${className}`}>
+      {/* Clean Empty Spread with subtle paper texture */}
+      <div className="absolute inset-0 opacity-[0.035] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
     </div>
   )
 }
-

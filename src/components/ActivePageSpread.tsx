@@ -37,32 +37,32 @@ export const ActivePageSpread: React.FC<ActivePageSpreadProps> = ({
       <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] border border-black/8 pointer-events-none z-30" />
       <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.6),inset_0_-1px_1.5px_rgba(0,0,0,0.1)] pointer-events-none z-30" />
 
-      {/* Left Clickable Half (Prev Page) */}
+      {/* Left Outer 10% Edge Turn Zone (Prev Page) */}
       {interactive && (
         <div
           onClick={onClickLeft}
           title="Turn to previous page"
-          className="absolute inset-y-0 left-0 w-1/2 cursor-pointer z-25 group/left"
+          className="absolute inset-y-0 left-0 w-[10%] cursor-pointer z-25 group/left"
         >
           {/* Subtle turn cue on hover */}
-          <div className="absolute inset-y-0 left-0 w-24 opacity-0 group-hover/left:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-start pl-6 bg-gradient-to-r from-black/15 to-transparent">
-            <span className="text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/60 px-3 py-1 rounded-full border border-white/10">
+          <div className="absolute inset-y-0 left-0 w-full opacity-0 group-hover/left:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-start pl-3 sm:pl-4 bg-gradient-to-r from-black/20 to-transparent">
+            <span className="text-white drop-shadow-md text-[10px] sm:text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/60 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap">
               ‹ Prev
             </span>
           </div>
         </div>
       )}
 
-      {/* Right Clickable Half (Next Page) */}
+      {/* Right Outer 10% Edge Turn Zone (Next Page) */}
       {interactive && (
         <div
           onClick={onClickRight}
           title="Turn to next page"
-          className="absolute inset-y-0 right-0 w-1/2 cursor-pointer z-25 group/right"
+          className="absolute inset-y-0 right-0 w-[10%] cursor-pointer z-25 group/right"
         >
           {/* Subtle turn cue on hover */}
-          <div className="absolute inset-y-0 right-0 w-24 opacity-0 group-hover/right:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-end pr-6 bg-gradient-to-l from-black/15 to-transparent">
-            <span className="text-white drop-shadow-md text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/60 px-3 py-1 rounded-full border border-white/10">
+          <div className="absolute inset-y-0 right-0 w-full opacity-0 group-hover/right:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-end pr-3 sm:pr-4 bg-gradient-to-l from-black/20 to-transparent">
+            <span className="text-white drop-shadow-md text-[10px] sm:text-[11px] font-sans font-semibold tracking-wider uppercase bg-black/60 px-2.5 py-1 rounded-full border border-white/10 whitespace-nowrap">
               Next ›
             </span>
           </div>

@@ -15,59 +15,71 @@ interface ProjectCardData {
   width: string
   height: string
   borderRadius: string
+  cardBgColor: string
+  filledImage: string
 }
 
-// Exact tight card color boundaries: the card color fills 100% of the interior right to the border with 0 gap
+// Each card has its color filling 100% of the border with zero gaps, matching the design exactly
 const PROJECT_CARDS: ProjectCardData[] = [
   {
     id: 'secureshare',
     title: 'SecureShare',
     href: 'https://github.com/abhishek-mathpati/SecureShare',
-    left: '2.8125%',    // x: 54
-    top: '33.0556%',    // y: 357
-    width: '19.7396%',  // 379px (x: 54..432)
-    height: '35.0926%', // 379px (y: 357..735)
-    borderRadius: '18.73%' // 71px radius on 379x379px
+    left: '2.8125%',    // 54px / 1920
+    top: '33.0556%',    // 357px / 1080
+    width: '19.7396%',  // 379px / 1920
+    height: '35.0926%', // 379px / 1080
+    borderRadius: '18.73%',
+    cardBgColor: '#D8E6A8',
+    filledImage: '/designs/projects/filled_secureshare.png'
   },
   {
     id: 'college-website',
     title: 'College Website',
     href: 'https://github.com/abhishek-mathpati/College-Website',
-    left: '26.0938%',   // x: 501
-    top: '55.2778%',    // y: 597
-    width: '16.6146%',  // 319px (x: 501..819)
-    height: '29.6296%', // 320px (y: 597..916)
-    borderRadius: '12.85%' // 41px radius on 319x320px
+    left: '26.0938%',   // 501px / 1920
+    top: '55.1852%',    // 596px / 1080
+    width: '16.8229%',  // 323px / 1920
+    height: '30.0926%', // 325px / 1080
+    borderRadius: '13.31%',
+    cardBgColor: '#F6F0A0',
+    filledImage: '/designs/projects/filled_college_website.png'
   },
   {
     id: 'smia',
     title: 'Social Media Investigative Assistant (SMIA)',
     href: 'https://github.com/abhishek-mathpati/social-media-investigative-assistant-for-law-enforcement',
-    left: '53.2292%',   // x: 1022
-    top: '9.0741%',     // y: 98
-    width: '19.1146%',  // 367px (x: 1022..1388)
-    height: '34.0741%', // 368px (y: 98..465)
-    borderRadius: '12.53%' // 46px radius on 367x368px
+    left: '53.1250%',   // 1020px / 1920
+    top: '8.8889%',     // 96px / 1080
+    width: '19.5313%',  // 375px / 1920
+    height: '34.8148%', // 376px / 1080
+    borderRadius: '12.80%',
+    cardBgColor: '#ACCBE9',
+    filledImage: '/designs/projects/filled_smia.png'
   },
   {
     id: 'qpat',
     title: 'Question Paper Automation Tool (QPAT)',
     href: 'https://github.com/abhishek-mathpati/Question-Paper-Automation-Tool',
-    left: '78.1250%',   // x: 1500
-    top: '29.6296%',    // y: 320
-    width: '18.5938%',  // 357px (x: 1500..1856)
-    height: '33.0556%', // 357px (y: 320..676)
-    borderRadius: '12.88%' // 46px radius on 357x357px
+    left: '78.1250%',   // 1500px / 1920
+    top: '29.5370%',    // 319px / 1080
+    width: '18.7500%',  // 360px / 1920
+    height: '33.4259%', // 361px / 1080
+    borderRadius: '13.33%',
+    cardBgColor: '#F6BD95',
+    filledImage: '/designs/projects/filled_qpat.png'
   },
   {
     id: 'park-hub',
     title: 'Park Hub: Parking Management System',
     href: 'https://github.com/abhishek-mathpati/Park-Hub',
-    left: '58.6979%',   // x: 1127
-    top: '64.0741%',    // y: 692
-    width: '18.8021%',  // 361px (x: 1127..1487)
-    height: '33.4259%', // 361px (y: 692..1052)
-    borderRadius: '10.25%' // 37px radius on 361x361px
+    left: '58.6458%',   // 1126px / 1920
+    top: '63.8889%',    // 690px / 1080
+    width: '18.9583%',  // 364px / 1920
+    height: '33.8889%', // 366px / 1080
+    borderRadius: '10.71%',
+    cardBgColor: '#D6BFE7',
+    filledImage: '/designs/projects/filled_park_hub.png'
   }
 ]
 
@@ -83,7 +95,7 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
         className="w-full h-full object-contain pointer-events-none select-none"
       />
 
-      {/* Precisely Calibrated Project Cards: Clean, Thin, Dark Border with Zero Gap */}
+      {/* Project Cards: Card color fully fills to the border with 0 gaps */}
       {PROJECT_CARDS.map((project) => (
         <a
           key={project.id}
@@ -98,9 +110,19 @@ export const SpreadProjects: React.FC<SpreadProps> = ({ className = '' }) => {
             top: project.top,
             width: project.width,
             height: project.height,
-            borderRadius: project.borderRadius
+            borderRadius: project.borderRadius,
+            backgroundColor: project.cardBgColor
           }}
         >
+          {/* Card Image: Full card color filling to the border edge with original artwork text */}
+          <img
+            src={project.filledImage}
+            alt={project.title}
+            className="w-full h-full object-cover pointer-events-none select-none"
+            loading="eager"
+            decoding="async"
+          />
+
           {/* Confined Card Blur Overlay on Hover - Exactly matching the card shape */}
           <div
             className="absolute inset-0 bg-black/15 backdrop-blur-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"

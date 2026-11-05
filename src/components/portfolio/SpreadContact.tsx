@@ -25,30 +25,50 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open GitHub Profile"
-        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95"
         style={{
           left: '63.333%',
           top: '49.074%',
-          width: '3.5%',
-          aspectRatio: '1 / 1'
+          width: '2.92%',
+          height: '4.63%'
         }}
         aria-label="GitHub Profile"
-      />
+      >
+        {/* Soft Ambient Halo Glow (like turning arrows) */}
+        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Hover Icon with Filled White Octocat & Subtle Lift Shadow */}
+        <img
+          src="/designs/contact/icon_hover_gh.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+        />
+      </a>
 
       {/* Interactive Button: Contact / Send Email Modal (Resend) */}
       <button
         type="button"
         onClick={() => setIsModalOpen(true)}
-        title="Send a Message (Resend Email)"
-        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95 bg-transparent"
+        title="Send a Message"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95 bg-transparent border-none p-0 outline-none"
         style={{
           left: '67.240%',
           top: '49.120%',
-          width: '3.5%',
-          aspectRatio: '1 / 1'
+          width: '2.92%',
+          height: '4.54%'
         }}
         aria-label="Send Direct Message"
-      />
+      >
+        {/* Soft Ambient Halo Glow */}
+        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Hover Icon with Filled White Envelope & Subtle Lift Shadow */}
+        <img
+          src="/designs/contact/icon_hover_em.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+        />
+      </button>
 
       {/* Interactive Link: LinkedIn Profile */}
       <a
@@ -56,15 +76,25 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         target="_blank"
         rel="noopener noreferrer"
         title="Open LinkedIn Profile"
-        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-105 active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-110 hover:-translate-y-1 active:scale-95"
         style={{
           left: '71.146%',
           top: '49.120%',
-          width: '3.5%',
-          aspectRatio: '1 / 1'
+          width: '2.81%',
+          height: '4.54%'
         }}
         aria-label="LinkedIn Profile"
-      />
+      >
+        {/* Soft Ambient Halo Glow with subtle blue tint */}
+        <div className="absolute -inset-2.5 rounded-full bg-blue-400/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Hover Icon with Filled White 'in' & Subtle Lift Shadow */}
+        <img
+          src="/designs/contact/icon_hover_li.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+        />
+      </a>
 
       {/* Interactive Link: Download CV / Resume */}
       <a
@@ -73,15 +103,25 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         rel="noopener noreferrer"
         download="Abhishek_Mathpati_CV.pdf"
         title="Download CV (PDF)"
-        className="absolute z-10 cursor-pointer rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out border-2 border-transparent hover:border-black/60 hover:bg-black/[0.06] hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:scale-[1.03] active:scale-95"
+        className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-[1.05] hover:-translate-y-1 active:scale-95"
         style={{
           left: '67.240%',
           top: '55.185%',
-          width: '8.44%',
-          height: '5.00%'
+          width: '8.13%',
+          height: '4.44%'
         }}
         aria-label="Download CV"
-      />
+      >
+        {/* Soft Ambient Halo Glow around the pill */}
+        <div className="absolute -inset-2.5 rounded-full bg-white/40 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        {/* Hover Icon with Filled White Cloud, Arrow & 'CV' & Subtle Lift Shadow */}
+        <img
+          src="/designs/contact/icon_hover_cv.png"
+          alt=""
+          className="relative w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] pointer-events-none select-none"
+        />
+      </a>
 
       {/* Direct Contact Form Modal */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

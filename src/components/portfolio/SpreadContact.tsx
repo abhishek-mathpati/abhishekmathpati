@@ -89,7 +89,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
 
       {/* Interactive Link: View / Download CV (Opens in new tab) */}
       <a
-        href="/Abhishek_Mathpati_CV.pdf?v=20261105_amcv"
+        href="/Abhishek_Mathpati_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
         title="Abhishek Mathpati CV"

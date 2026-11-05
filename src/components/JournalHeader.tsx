@@ -23,7 +23,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
     <header className="relative z-30 w-full px-6 sm:px-10 pt-5 pb-2 flex items-center justify-between select-none">
       {/* Top Left Heading */}
       <div className="flex items-center">
-        <h1 className="text-3xl sm:text-4xl font-normal tracking-wide text-white font-apricots flex items-center gap-2">
+        <h1 className="text-5xl sm:text-6xl font-normal tracking-wide text-white font-apricots flex items-center gap-2">
           <span>Abhishek Mathpati</span>
         </h1>
       </div>
@@ -31,30 +31,7 @@ export const JournalHeader: React.FC<JournalHeaderProps> = ({
       {/* Top Right: Clean Minimal Controls */}
       <div className="flex items-center gap-2.5">
         {/* Toggle Book Open / Closed */}
-        <button
-          onClick={() => {
-            sound.playPaperTurn(!isClosed)
-            onToggleBook()
-          }}
-          aria-label={isClosed ? "Open Book" : "Close Book"}
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all duration-200 shadow-sm hover:scale-105 active:scale-95"
-        >
-          {isClosed ? (
-            <>
-              <BookOpen className="w-3.5 h-3.5 text-amber-300" />
-              <span>Open Book</span>
-            </>
-          ) : (
-            <>
-              <Book className="w-3.5 h-3.5 text-blue-300" />
-              <span>Close Book</span>
-              <span className="opacity-40">•</span>
-              <span className="text-white/80 font-mono text-[11px]">
-                Pages {currentPageNumber * 2 - 1}–{currentPageNumber * 2} of {totalPages * 2}
-              </span>
-            </>
-          )}
-        </button>
+
 
         {/* Subtle Audio Mute / Unmute Button */}
         <button

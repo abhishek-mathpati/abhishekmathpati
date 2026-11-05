@@ -238,22 +238,13 @@ export const BookStage: React.FC<BookStageProps> = ({
                   onClick={handlePrev}
                   onMouseEnter={() => setIsHoveringLeft(true)}
                   onMouseLeave={() => setIsHoveringLeft(false)}
-                  title={currentIndex === 0 ? "Close Book" : "Previous Page (Click Edge or Side Area)"}
+                  title={currentIndex === 0 ? "Close Book" : "Previous Page"}
                   style={{
                     right: '95%',
                     left: 'max(-100vw, -1200px)',
                   }}
-                  className="absolute inset-y-0 z-45 cursor-pointer group/left-zone flex items-center justify-end"
-                >
-                  {/* Warm luminous highlight along the 5% paper edge */}
-                  <div
-                    className={`absolute inset-y-0 right-0 w-12 sm:w-16 pointer-events-none transition-all duration-300 rounded-l-[22px] ${
-                      isHoveringLeft
-                        ? 'opacity-100 bg-gradient-to-r from-transparent via-amber-300/10 to-amber-200/25 shadow-[inset_-3px_0_12px_rgba(255,255,255,0.18)]'
-                        : 'opacity-0 bg-transparent'
-                    }`}
-                  />
-                </div>
+                  className="absolute inset-y-0 z-45 cursor-pointer"
+                />
 
                 {/* Left Floating Chevron Button in Outside Blank Space */}
                 <div
@@ -271,7 +262,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                     <div
                       className={`absolute -inset-2.5 rounded-full blur-md transition-all duration-300 pointer-events-none ${
                         isHoveringLeft
-                          ? 'opacity-100 bg-amber-400/25 scale-110'
+                          ? 'opacity-100 bg-white/15 scale-110'
                           : 'opacity-0 scale-90'
                       }`}
                     />
@@ -282,7 +273,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                       aria-label={currentIndex === 0 ? "Close Book" : "Previous Page"}
                       className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border shadow-xl ${
                         isHoveringLeft
-                          ? 'backdrop-blur-xl bg-stone-900/85 border-amber-300/50 text-amber-100 shadow-[0_0_25px_rgba(251,191,36,0.25),0_10px_30px_rgba(0,0,0,0.5)] scale-110'
+                          ? 'backdrop-blur-xl bg-stone-900/85 border-white/45 text-white shadow-[0_0_25px_rgba(255,255,255,0.18),0_10px_30px_rgba(0,0,0,0.5)] scale-110'
                           : 'backdrop-blur-md bg-stone-900/50 border-white/20 text-stone-300 shadow-[0_4px_18px_rgba(0,0,0,0.35)] scale-100'
                       } active:scale-95`}
                     >
@@ -296,9 +287,9 @@ export const BookStage: React.FC<BookStageProps> = ({
 
                   {/* Refined Pill Badge */}
                   <div
-                    className={`transition-all duration-300 ease-out backdrop-blur-md px-3.5 py-1.5 rounded-full border whitespace-nowrap hidden lg:flex items-center gap-1.5 shadow-xl pointer-events-none ${
+                    className={`transition-all duration-300 ease-out backdrop-blur-md px-3.5 py-1.5 rounded-full border whitespace-nowrap hidden lg:flex items-center gap-1.5 shadow-xl pointer-events-none select-none ${
                       isHoveringLeft
-                        ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-amber-400/30 text-amber-100 shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(251,191,36,0.15)]'
+                        ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-white/30 text-white shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(255,255,255,0.1)]'
                         : 'opacity-0 translate-x-3 scale-95 bg-stone-900/40 border-white/10 text-stone-400'
                     }`}
                   >
@@ -315,22 +306,13 @@ export const BookStage: React.FC<BookStageProps> = ({
                       onClick={handleNext}
                       onMouseEnter={() => setIsHoveringRight(true)}
                       onMouseLeave={() => setIsHoveringRight(false)}
-                      title="Next Page (Click Edge or Side Area)"
+                      title="Next Page"
                       style={{
                         left: '95%',
                         right: 'max(-100vw, -1200px)',
                       }}
-                      className="absolute inset-y-0 z-45 cursor-pointer group/right-zone flex items-center justify-start"
-                    >
-                      {/* Warm luminous highlight along the 5% paper edge */}
-                      <div
-                        className={`absolute inset-y-0 left-0 w-12 sm:w-16 pointer-events-none transition-all duration-300 rounded-r-[22px] ${
-                          isHoveringRight
-                            ? 'opacity-100 bg-gradient-to-l from-transparent via-amber-300/10 to-amber-200/25 shadow-[inset_3px_0_12px_rgba(255,255,255,0.18)]'
-                            : 'opacity-0 bg-transparent'
-                        }`}
-                      />
-                    </div>
+                      className="absolute inset-y-0 z-45 cursor-pointer"
+                    />
 
                     {/* Right Floating Chevron Button in Outside Blank Space */}
                     <div
@@ -348,7 +330,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                         <div
                           className={`absolute -inset-2.5 rounded-full blur-md transition-all duration-300 pointer-events-none ${
                             isHoveringRight
-                              ? 'opacity-100 bg-amber-400/25 scale-110'
+                              ? 'opacity-100 bg-white/15 scale-110'
                               : 'opacity-0 scale-90'
                           }`}
                         />
@@ -359,7 +341,7 @@ export const BookStage: React.FC<BookStageProps> = ({
                           aria-label="Next Page"
                           className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border shadow-xl ${
                             isHoveringRight
-                              ? 'backdrop-blur-xl bg-stone-900/85 border-amber-300/50 text-amber-100 shadow-[0_0_25px_rgba(251,191,36,0.25),0_10px_30px_rgba(0,0,0,0.5)] scale-110'
+                              ? 'backdrop-blur-xl bg-stone-900/85 border-white/45 text-white shadow-[0_0_25px_rgba(255,255,255,0.18),0_10px_30px_rgba(0,0,0,0.5)] scale-110'
                               : 'backdrop-blur-md bg-stone-900/50 border-white/20 text-stone-300 shadow-[0_4px_18px_rgba(0,0,0,0.35)] scale-100'
                           } active:scale-95`}
                         >
@@ -369,9 +351,9 @@ export const BookStage: React.FC<BookStageProps> = ({
 
                       {/* Refined Pill Badge */}
                       <div
-                        className={`transition-all duration-300 ease-out backdrop-blur-md px-3.5 py-1.5 rounded-full border whitespace-nowrap hidden lg:flex items-center gap-1.5 shadow-xl pointer-events-none ${
+                        className={`transition-all duration-300 ease-out backdrop-blur-md px-3.5 py-1.5 rounded-full border whitespace-nowrap hidden lg:flex items-center gap-1.5 shadow-xl pointer-events-none select-none ${
                           isHoveringRight
-                            ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-amber-400/30 text-amber-100 shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(251,191,36,0.15)]'
+                            ? 'opacity-100 translate-x-0 scale-100 bg-stone-900/85 border-white/30 text-white shadow-[0_4px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(255,255,255,0.1)]'
                             : 'opacity-0 -translate-x-3 scale-95 bg-stone-900/40 border-white/10 text-stone-400'
                         }`}
                       >

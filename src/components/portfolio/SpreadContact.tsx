@@ -87,13 +87,12 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
         />
       </a>
 
-      {/* Interactive Link: Download CV / Resume */}
+      {/* Interactive Link: View / Download CV (Opens in new tab) */}
       <a
         href="/Abhishek_Mathpati_CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        download="Abhishek_Mathpati_CV.pdf"
-        title="Download CV (PDF)"
+        title="View CV (PDF)"
         className="group absolute z-10 cursor-pointer -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out hover:scale-108 active:scale-95"
         style={{
           left: '67.240%',
@@ -101,7 +100,7 @@ export const SpreadContact: React.FC<SpreadProps> = ({ className = '' }) => {
           width: '8.13%',
           height: '4.44%'
         }}
-        aria-label="Download CV"
+        aria-label="View CV in new tab"
       >
         {/* Exact Original Icon - Straight Pop-Up Only */}
         <img

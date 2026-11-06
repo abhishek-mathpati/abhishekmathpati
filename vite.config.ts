@@ -7,6 +7,14 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
     name: 'contact-api-plugin',
     configureServer(server) {
       server.middlewares.use('/api/contact', async (req, res, next) => {
+        if (req.method === 'OPTIONS') {
+          res.statusCode = 204;
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          return res.end();
+        }
+
         if (req.method !== 'POST') return next();
 
         let body = '';
@@ -14,36 +22,50 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
           body += chunk;
         });
         req.on('end', async () => {
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+
           try {
             const data = JSON.parse(body || '{}');
             const { name, email, message, _honey } = data;
 
             if (_honey) {
               res.statusCode = 200;
-              res.setHeader('Content-Type', 'application/json');
-              return res.end(JSON.stringify({ success: true }));
+              return res.end(JSON.stringify({ success: true, message: 'Message acknowledged' }));
             }
 
-            if (!name || !email || !message) {
+            const cleanName = (typeof name === 'string' ? name : '').trim();
+            const cleanEmail = (typeof email === 'string' ? email : '').trim().toLowerCase();
+            const cleanMessage = (typeof message === 'string' ? message : '').trim();
+
+            if (!cleanName || cleanName.length < 2 || cleanName.length > 100) {
               res.statusCode = 400;
-              res.setHeader('Content-Type', 'application/json');
-              return res.end(JSON.stringify({ error: 'Name, email, and message are required.' }));
+              return res.end(JSON.stringify({ error: 'Please enter a valid name (2 to 100 characters).' }));
             }
 
-            const apiKey = env.RESEND_API_KEY || process.env.RESEND_API_KEY || '';
-            const recipientEmail = env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'abhishekmathpati2027@gmail.com';
-            const rawFrom = env.EMAIL_FROM || process.env.EMAIL_FROM || 'Portfolio Contact <onboarding@resend.dev>';
+            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+            if (!cleanEmail || cleanEmail.length > 254 || !emailRegex.test(cleanEmail)) {
+              res.statusCode = 400;
+              return res.end(JSON.stringify({ error: 'Please enter a valid email address.' }));
+            }
+
+            if (!cleanMessage || cleanMessage.length < 5 || cleanMessage.length > 5000) {
+              res.statusCode = 400;
+              return res.end(JSON.stringify({ error: 'Message must be between 5 and 5,000 characters.' }));
+            }
+
+            const apiKey = (env.RESEND_API_KEY || process.env.RESEND_API_KEY || '').trim();
+            const recipientEmail = (env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'abhishekmathpati2027@gmail.com').trim();
+            const rawFrom = (env.EMAIL_FROM || process.env.EMAIL_FROM || 'Portfolio Contact <onboarding@resend.dev>').trim();
             const fromAddress = rawFrom.includes('<') ? rawFrom : `Portfolio Contact <${rawFrom}>`;
 
             if (!apiKey || apiKey.startsWith('re_123456789')) {
-              // Simulated success in dev if using placeholder key
-              console.log('[Dev Contact API] Received transmission:', { name, email, message, recipientEmail });
+              console.log('[Dev Contact API] Received transmission:', { cleanName, cleanEmail, cleanMessage, recipientEmail });
               res.statusCode = 200;
-              res.setHeader('Content-Type', 'application/json');
               return res.end(JSON.stringify({
                 success: true,
                 devMode: true,
-                message: 'Message logged in dev console (add your real RESEND_API_KEY in .env.local to dispatch via Resend)'
+                message: 'Message logged in dev console (add real RESEND_API_KEY in .env.local to dispatch via Resend)'
               }));
             }
 
@@ -52,32 +74,34 @@ function contactApiPlugin(env: Record<string, string>): Plugin {
             const sendResult = await resend.emails.send({
               from: fromAddress,
               to: recipientEmail,
-              replyTo: email,
-              subject: `New Portfolio Message from ${name}`,
-              text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+              replyTo: cleanEmail,
+              subject: `New Portfolio Message from ${cleanName}`,
+              text: `Name: ${cleanName}\nEmail: ${cleanEmail}\nSent At: ${new Date().toISOString()}\n\nMessage:\n${cleanMessage}`,
               html: `
-                <div style="font-family: monospace; background: #0a0a0a; color: #f0f0f0; padding: 24px; border-radius: 8px;">
-                  <h2 style="color: #4285F4; border-bottom: 1px solid #222; padding-bottom: 12px;">New Contact Submission</h2>
-                  <p><strong>Name:</strong> ${name}</p>
-                  <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #60a5fa;">${email}</a></p>
-                  <p><strong>Message:</strong></p>
-                  <div style="background: #141414; padding: 16px; border-left: 3px solid #4285F4; white-space: pre-wrap;">${message}</div>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 580px; margin: 0 auto; background: #0f172a; color: #f8fafc; border-radius: 14px; overflow: hidden; border: 1px solid #334155;">
+                  <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 24px 28px; border-bottom: 1px solid #334155;">
+                    <h2 style="margin: 0; color: #38bdf8; font-size: 19px; font-weight: 700;">Portfolio Transmission</h2>
+                    <p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 13px;">Direct message received via portfolio contact modal</p>
+                  </div>
+                  <div style="padding: 24px 28px;">
+                    <p><strong>Sender:</strong> ${cleanName}</p>
+                    <p><strong>Email:</strong> <a href="mailto:${cleanEmail}" style="color: #60a5fa;">${cleanEmail}</a></p>
+                    <p><strong>Message:</strong></p>
+                    <div style="background: #1e293b; border-left: 3px solid #38bdf8; border-radius: 6px; padding: 16px; color: #e2e8f0; white-space: pre-wrap;">${cleanMessage}</div>
+                  </div>
                 </div>
               `
             });
 
             if (sendResult.error) {
-              res.statusCode = 500;
-              res.setHeader('Content-Type', 'application/json');
-              return res.end(JSON.stringify({ error: sendResult.error.message }));
+              res.statusCode = 502;
+              return res.end(JSON.stringify({ error: `Resend error: ${sendResult.error.message}` }));
             }
 
             res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({ success: true, id: sendResult.data?.id }));
+            res.end(JSON.stringify({ success: true, id: sendResult.data?.id, message: 'Message sent successfully.' }));
           } catch (err: any) {
             res.statusCode = 500;
-            res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ error: err?.message || 'Server error' }));
           }
         });

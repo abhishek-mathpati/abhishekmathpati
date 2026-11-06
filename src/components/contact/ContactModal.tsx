@@ -23,11 +23,12 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
                 body: JSON.stringify({ name, email, message, _honey: honey }),
             });
 
-            const data = await res.json();
-            if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok || !data.success) {
                 throw new Error(data.error || 'Failed to send transmission');
             }
 
+            // Only mark success if explicitly accepted by server & provider
             setStatus('success');
             setName('');
             setEmail('');
@@ -35,9 +36,35 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
             if (onSuccess) onSuccess();
         } catch (err: any) {
             setStatus('error');
-            setErrorMessage(err.message || 'Something went wrong.');
+            setErrorMessage(err.message || 'Something went wrong while delivering your message.');
         }
     };
+
+    if (status === 'success') {
+        return (
+            <div className="py-6 px-2 flex flex-col items-center text-center space-y-4 font-sans">
+                <div className="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-600 shadow-sm animate-in zoom-in-50 duration-300">
+                    <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <div className="space-y-1">
+                    <h3 className="text-base font-bold text-slate-900">Message Delivered!</h3>
+                    <p className="text-xs text-slate-600 max-w-xs">
+                        Thank you for reaching out. Your transmission was received and will be replied to shortly.
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setStatus('idle');
+                        setErrorMessage('');
+                    }}
+                    className="mt-2 px-5 py-2 rounded-full bg-slate-900/90 hover:bg-slate-900 text-white font-medium text-xs shadow-md transition-all active:scale-95 cursor-pointer"
+                >
+                    Send Another Message
+                </button>
+            </div>
+        );
+    }
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4 max-w-md w-full font-sans text-sm">

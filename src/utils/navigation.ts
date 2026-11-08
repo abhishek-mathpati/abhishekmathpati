@@ -130,3 +130,4 @@ export function updateRoute(
     document.title = targetTitle
   } catch {}
 }
+

@@ -1,26 +1,22 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { JournalPage } from './types/journal'
 import { samplePages } from './data/samplePages'
 import { JournalHeader } from './components/JournalHeader'
 import { BookStage } from './components/BookStage'
 import { AntiDevTools } from './components/security/AntiDevTools'
 import { sound } from './utils/sound'
+import { parseCurrentRoute, updateRoute } from './utils/navigation'
 
 export default function App() {
-  // State
-  const [pages] = useState<JournalPage[]>(samplePages)
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
-  const [isClosed, setIsClosed] = useState<boolean>(true)
+  // Parse initial route from clean URL path (e.g. / -> closed, /education -> open at page 0)
+  const initialRouteRef = useRef(
+    parseCurrentRoute(typeof window !== 'undefined' ? window.location.pathname : '/')
+  )
 
-  // Ensure URL remains completely clean without query parameters
-  useEffect(() => {
-    try {
-      if (window.location.search) {
-        const cleanUrl = window.location.pathname + window.location.hash
-        window.history.replaceState({}, '', cleanUrl || '/')
-      }
-    } catch {}
-  }, [])
+  // State initialized based on initial URL route
+  const [pages] = useState<JournalPage[]>(samplePages)
+  const [currentIndex, setCurrentIndex] = useState<number>(initialRouteRef.current.pageIndex)
+  const [isClosed, setIsClosed] = useState<boolean>(initialRouteRef.current.isClosed)
 
   // 3D Animation states
   const [isTurning, setIsTurning] = useState(false)
@@ -32,29 +28,75 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [tiltEnabled] = useState(true)
 
+  // Normalize URL and title on initial mount
+  useEffect(() => {
+    const route = parseCurrentRoute(window.location.pathname)
+    updateRoute(route.isClosed, route.pageIndex, 'replace')
+  }, [])
+
+  // Close book animation
+  const handleCloseBook = useCallback(() => {
+    if (coverAnimation || isClosed || isTurning) return
+    sound.playPaperTurn(false)
+    setCurrentIndex(0)
+    setCoverAnimation('close')
+    updateRoute(true, 0, 'push')
+  }, [coverAnimation, isClosed, isTurning])
+
+  const handleCloseComplete = useCallback(() => {
+    setCoverAnimation(null)
+    setIsClosed(true)
+  }, [])
+
+  // Open book animation
+  const handleOpenBook = useCallback(() => {
+    if (coverAnimation || !isClosed || isTurning) return
+    sound.playPaperTurn(true)
+    setCoverAnimation('open')
+    updateRoute(false, 0, 'push')
+  }, [coverAnimation, isClosed, isTurning])
+
+  const handleOpenComplete = useCallback(() => {
+    setCoverAnimation(null)
+    setIsClosed(false)
+    setCurrentIndex(0)
+  }, [])
+
+  const handleCoverAnimationComplete = useCallback(() => {
+    if (coverAnimation === 'open') {
+      handleOpenComplete()
+    } else if (coverAnimation === 'close') {
+      handleCloseComplete()
+    }
+  }, [coverAnimation, handleOpenComplete, handleCloseComplete])
+
   // Turn orchestration
   const startTurn = useCallback(
     (direction: 'next' | 'prev') => {
       if (isTurning || isClosed || coverAnimation) return
 
       if (direction === 'next' && currentIndex < pages.length - 1) {
+        const nextIdx = currentIndex + 1
         sound.playPaperTurn(true)
         setIsTurning(true)
         setTurnDirection('next')
-        setTargetIndex(currentIndex + 1)
+        setTargetIndex(nextIdx)
+        updateRoute(false, nextIdx, 'push')
       } else if (direction === 'prev') {
         if (currentIndex > 0) {
+          const prevIdx = currentIndex - 1
           sound.playPaperTurn(false)
           setIsTurning(true)
           setTurnDirection('prev')
-          setTargetIndex(currentIndex - 1)
+          setTargetIndex(prevIdx)
+          updateRoute(false, prevIdx, 'push')
         } else {
           // If already on page 1 and turn prev is pressed, smoothly close the book!
           handleCloseBook()
         }
       }
     },
-    [currentIndex, pages.length, isTurning, isClosed, coverAnimation]
+    [currentIndex, pages.length, isTurning, isClosed, coverAnimation, handleCloseBook]
   )
 
   const handleTurnComplete = useCallback(() => {
@@ -66,7 +108,7 @@ export default function App() {
     setTargetIndex(null)
   }, [targetIndex])
 
-  // Direct page navigation
+  // Direct page navigation (clicking fanned background pages)
   const handlePageSelect = useCallback(
     (index: number) => {
       if (index === currentIndex || isTurning || isClosed || coverAnimation) return
@@ -78,44 +120,37 @@ export default function App() {
       } else {
         sound.playPaperTurn(index > currentIndex)
         setCurrentIndex(index)
+        updateRoute(false, index, 'push')
       }
     },
     [currentIndex, isTurning, isClosed, coverAnimation, startTurn]
   )
 
-  // Open book animation
-  const handleOpenBook = useCallback(() => {
-    if (coverAnimation || !isClosed || isTurning) return
-    sound.playPaperTurn(true)
-    setCoverAnimation('open')
-  }, [coverAnimation, isClosed, isTurning])
+  // Sync with browser Back and Forward navigation (popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      const route = parseCurrentRoute(window.location.pathname)
 
-  const handleOpenComplete = useCallback(() => {
-    setCoverAnimation(null)
-    setIsClosed(false)
-    setCurrentIndex(0)
-  }, [])
+      // Stop any active turn animation
+      setIsTurning(false)
+      setTurnDirection(null)
+      setTargetIndex(null)
+      setCoverAnimation(null)
 
-  // Close book animation
-  const handleCloseBook = useCallback(() => {
-    if (coverAnimation || isClosed || isTurning) return
-    sound.playPaperTurn(false)
-    setCurrentIndex(0)
-    setCoverAnimation('close')
-  }, [coverAnimation, isClosed, isTurning])
+      if (route.isClosed) {
+        setIsClosed(true)
+        setCurrentIndex(0)
+      } else {
+        setIsClosed(false)
+        setCurrentIndex(route.pageIndex)
+      }
 
-  const handleCloseComplete = useCallback(() => {
-    setCoverAnimation(null)
-    setIsClosed(true)
-  }, [])
-
-  const handleCoverAnimationComplete = useCallback(() => {
-    if (coverAnimation === 'open') {
-      handleOpenComplete()
-    } else if (coverAnimation === 'close') {
-      handleCloseComplete()
+      updateRoute(route.isClosed, route.pageIndex, 'replace')
     }
-  }, [coverAnimation, handleOpenComplete, handleCloseComplete])
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
 
   // Toggle book open/closed
   const handleToggleBook = useCallback((closed?: boolean) => {

@@ -1,12 +1,5 @@
 {
   "version": 1,
-  "include": ["/*"],
-  "exclude": [
-    "/assets/*",
-    "/education/*",
-    "/experience/*",
-    "/publications/*",
-    "/favicon.ico"
-  ]
+  "include": ["/api/*"],
+  "exclude": []
 }
-
